@@ -2,18 +2,41 @@
 #Topline h2 {
 	background-color: #393A3C;
 	color: #FCFBFB;
-	font-family: actor;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
-	font-weight: 600;
+	font-weight: 500;
 	font-size: small;
 	padding-top: 12px;
 	padding-right: 5px;
 	padding-bottom: 12px;
-	padding-left: 42px;
+	padding-left: 30px;
 	margin-bottom: 0px;
 	position: static;
 	list-style-type: none;
 	width: 1000px;
+	letter-spacing: 1px;
+}
+#Topline #login {
+	display: inline;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 8pt;
+	position: relative;
+	top: -35px;
+	left: 657px;
+	color: #FCF9F9;
+	font-weight: 400;
+	letter-spacing: 0.5px;
+	text-transform: capitalize;
+}
+#login form #loginsubmit {
+	position: relative;
+	top: 2px;
+}
+#login form input {
+	border-spacing: 1px 1px;
+	border-color: #FAF8F8;
+	border-radius: 3px;
+	border-style: none;
 }
 #Leftline {
 	background-color: #191718;
@@ -26,6 +49,7 @@
 	position: relative;
 	float: left;
 	font-size: 9pt;
+	top: -26px;
 }
 #Leftline_top {
 	width: 180px;
@@ -33,24 +57,65 @@
 	background-color: #F65857;
 	float: left;
 }
-#Navi ul {
-	padding-left: 42px;
-	list-style-type: none;
-	font-family: actor;
+#Leftline_top #current {
+	top: 41px;
+	position: relative;
+	left: 30px;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	opacity: 0.8;
+	font-size: x-small;
+	letter-spacing: 1px;
+}
+#Leftline_top #day {
+	left: 28px;
+	position: absolute;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
+	font-size: 40pt;
+	top: -33px;
+	letter-spacing: 0px;
+}
+#Leftline_top #month {
+	position: relative;
+	top: 0px;
+	left: 30px;
+	opacity: 0.5;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-variant: normal;
+	letter-spacing: 1px;
+}
+#Navi ul {
+	list-style-type: none;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: 600;
 	font-size: small;
 	line-height: 25px;
 	color: #3F3F3F;
 	float: left;
+	position: relative;
+	top: 12px;
+	left: 5px;
 }
 #Navi .naviul li a  {
 	color: #575757;
 	text-decoration: none;
 	font-style: normal;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 500;
+	letter-spacing: -0.5px;
 }
 #Navi .naviul li a:hover {
 	color: #BDBDBD;
+	position: absolute;
+}
+#Navi .naviul #space {
+	position: relative;
+	top: 10px;
+	left: -15px;
 }
 #profile {
 	list-style-image: url(Images/ico_profile.png);
@@ -72,8 +137,9 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	background-color: #F5F4F4;
-	left: 875px;
+	left: 863px;
 	float: left;
+	top: 51px;
 }
 #my_profile {
 	width: 150px;
@@ -84,9 +150,9 @@
 }
 #Rightline #mine {
 	color: #9F9E9E;
-	font-family: actor;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 400;
 	font-size: 22pt;
 	position: relative;
 	left: 13px;
@@ -102,10 +168,10 @@
 	display: block;
 }
 #Content h1 {
-	font-family: actor;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: x-large;
+	font-size: xx-large;
 	margin-left: 50px;
 	margin-top: 19px;
 	-webkit-box-shadow: inset 0px 0px;
@@ -128,14 +194,14 @@
 	text-align: center;
 	text-transform: capitalize;
 	background-color: #F65857;
-	margin-top: -45px;
+	margin-top: -52px;
 	margin-left: 510px;
 	background-origin: border-box;
 }
 #buttonposi {
 	position: relative;
 	top: 7px;
-	font-family: actor;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 9pt;
@@ -163,7 +229,7 @@
 	position: relative;
 	margin-left: 15px;
 	margin-right: 15px;
-	font-family: actor;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 9pt;
@@ -178,4 +244,10 @@
 	position: relative;
 	top: 140px;
 	margin-left: 17px;
+	width: 25px;
+	height: 25px;
+}
+.arr_info #accept {
+}
+.arr_info #reject {
 }
