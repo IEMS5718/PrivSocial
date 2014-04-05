@@ -16,6 +16,8 @@
 	width: 1000px;
 	letter-spacing: 1px;
 }
+
+
 #user_info_head_img {
 	border-spacing: 1px 1px;
 	border-color: #373737;
@@ -43,13 +45,14 @@
 #Leftline {
 	background-color: #191718;
 	color: #FBF9F9;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 180px;
 	height: 600px;
 	position: relative;
 	float: left;
 	font-size: 9pt;
-	top: 0px;
 }
 #Leftline_top {
 	width: 180px;
@@ -88,6 +91,7 @@
 	letter-spacing: 1px;
 }
 #Navi ul {
+	list-style-type: none;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 600;
@@ -117,8 +121,8 @@
 	left: -15px;
 }
 #profile {
-	list-style-position: outside;
 	list-style-image: url(Images/ico_profile.png);
+	list-style-position: outside;
 }
 #activity {
 	list-style-image: url(Images/ico_act.png);
@@ -218,7 +222,7 @@
 	max-height: 250px;
 	height: 250px;
 	padding-left: px;
-	margin-left: 3px;
+	margin-left: 5px;
 }
 #arr_header {
 	height: 3px;
@@ -250,4 +254,12 @@
 }
 .arr_info #reject {
 }
-
+#Content #user_profile {
+	width: 400px;
+	position: relative;
+	left: 51px;
+	top: -32px;
+	color: #4B4B4B;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: small;
+}
