@@ -86,25 +86,25 @@ body form {
 #logindiv #formbackground {
 	background-color: #393838;
 	width: 480px;
-	height: 90px;
+	height: 85px;
 	position: relative;
-	left: -4px;
+	left: -2px;
 	z-index: -1;
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 	top: 11px;
-	opacity: 0.8;
+	opacity: 0.6;
 	border-radius: 5px;
 }
 #logindiv p {
-	color: #8B8B8B;
+	color: #929191;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: small;
 	position: relative;
-	top: -39px;
+	top: -35px;
 	left: -1px;
 	font-weight: 200;
 	height: auto;
