@@ -114,7 +114,7 @@
 }
 #Navi .naviul li a:hover {
 	color: #BDBDBD;
-	position: absolute;
+	position: relative;
 }
 #Navi .naviul #space {
 	position: relative;
@@ -201,6 +201,10 @@
 	margin-top: -52px;
 	margin-left: 510px;
 	background-origin: border-box;
+	border-radius: 5px;
+}
+#postbutton:hover {
+	background-color: #FC0202;
 }
 #buttonposi {
 	position: relative;

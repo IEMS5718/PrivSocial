@@ -97,7 +97,6 @@
 	letter-spacing: 1px;
 }
 #Navi ul {
-	list-style-type: none;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 600;
@@ -119,7 +118,6 @@
 }
 #Navi .naviul li a:hover {
 	color: #BDBDBD;
-	position: absolute;
 }
 #Navi .naviul #space {
 	position: relative;
@@ -224,7 +222,7 @@
 #user_profile_form #signature textarea {
 	margin-top: 9px;
 	margin-bottom: 9px;
-	padding-right: 411px;
+	padding-right: 412px;
 	resize: none;
 	border-radius: 5px;
 	border-spacing: 1px 1px;
@@ -304,10 +302,21 @@
 	height: 20px;
 	padding-bottom: 22px;
 }
+#user_profile_form #formbuttons #update:hover {
+	background-color: #FC0202;
+	width: 80px;
+	height: 20px;
+}
 #user_profile_form #formbuttons #reset {
 	position: relative;
 	width: 80px;
 	height: 20px;
 	margin-left: 27px;
 	padding-bottom: 22px;
+}
+
+#user_profile_form #formbuttons #reset:hover {
+	background-color: #FC0202;
+	width: 80px;
+	height: 20px;
 }

@@ -119,7 +119,7 @@
 }
 #Navi .naviul li a:hover {
 	color: #BDBDBD;
-	position: absolute;
+	position: relative;
 }
 #Navi .naviul #space {
 	position: relative;
