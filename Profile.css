@@ -313,6 +313,7 @@
 	height: 20px;
 	margin-left: 27px;
 	padding-bottom: 22px;
+	z-index: 1;
 }
 
 #user_profile_form #formbuttons #reset:hover {

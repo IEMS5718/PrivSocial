@@ -50,8 +50,9 @@
     </div>  
   </div>
   <div id="Content">
+  <input type="button" class="button" id="postbutton" value="Post Act">
     <h1>Activity</h1>
-    <a href="#" id="postbutton"><span id="buttonposi">post acts</span></a>
+    
 <div class="arr_info" id="arr_info_1">
       <header id="arr_header"></header>
     <p id="arr_invitor">invitor</p>
@@ -118,5 +119,16 @@
     </div>
   </div>
 </div>
+	<!-- out of main wrapper-->
+    <div id="postform">
+         <input type="text" id="inventname" placeholder="Event name"><br>
+        <input type="date" id="inventdate">
+        <input type="time" id="inventtime"><br>
+        <textarea id="inventcontent" placeholder="Content (address, film information...)" ></textarea><br>
+         <textarea id="participants" placeholder="Participants (Separated by a semicolon ';' )"></textarea>><br>
+        
+    <input type="button" class="button" name="post" id="post" value="post">		
+        <input type="button" class="button" name="send" id="close" value="close"> 
+        </div>
 </body>
 </html>

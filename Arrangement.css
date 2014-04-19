@@ -273,7 +273,7 @@
 }
 #arr_info p {
 	margin-left: 20px;
-	font-family: actor;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	color: #979797;
@@ -319,11 +319,11 @@
 #dates p {
 	display: inline;
 	color: #8F8E8E;
-	font-family: actor;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 10pt;
-	margin-left: 5px;
+	font-size: 8pt;
+	margin-left: 10px;
 	position: relative;
 	left: 67px;
 	top: 79px;
@@ -365,6 +365,7 @@
 	position: relative;
 	left: 13px;
 	top: 6px;
+	padding-left: 5px;
 }
 
 #sendmsg #msgcontent {
@@ -380,6 +381,7 @@
 	left: 15px;
 	position: relative;
 	width: 300px;
+	padding-left: 5px;
 }
 
 #sendmsg:hover{

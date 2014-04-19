@@ -6,6 +6,7 @@ $( document ).ready(function() {
   $("#arr_info_4").hide();
   $("#arr_info_5").hide();
   $("#arr_info_6").hide();
+  $("#postform").hide();
   
  // $('#user_info_name').load("");                          //""里输入服务器地址,下同
  // $('#user_info').load("");
@@ -37,7 +38,8 @@ $( document ).ready(function() {
   var showmonth = month[date.getMonth()];
   $('#month').html(showmonth);
 
-  var currentevents = 5; //document.getElementById("current");
+  var currentevents = 5;  
+  $("#current").html('Current invites: ' + currentevents);
   
   if (currentevents > 0) {
     $("#arr_info_1").show();
@@ -195,4 +197,16 @@ $( document ).ready(function() {
 	}
   }
 
+//function of postbutton
+  $("#postbutton").click(function(){
+  	$("#postform").show();
+  	wp=document.getElementById('Wrapper');
+	wp.style.opacity=0.3;
+  });
+
+  $("#close").click(function(){
+  	$("#postform").hide();
+  	wp=document.getElementById('Wrapper');
+	wp.style.opacity=1;
+  });
 });
