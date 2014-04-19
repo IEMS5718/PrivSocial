@@ -52,12 +52,12 @@ body {
 body form {
 	position: relative;
 	top: 94px;
-	left: 5px;
+	left: 0px;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	padding-left: 43px;
 	padding-top: 10px;
 	padding-bottom: 33px;
-	width: 410px;
+	width: 450px;
 	padding-right: 31px;
 	border-radius: 5px;
 	opacity: 1;
