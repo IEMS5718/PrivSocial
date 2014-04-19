@@ -42,14 +42,14 @@ $( document ).ready(function() {
   $("#current").html('Current invites: ' + currentevents);
   
   if (currentevents > 0) {
-    $("#arr_info_1").show();
+    $("#arr_info_1").fadeIn(1000);
     currentevents = currentevents - 1; 
     $("#accept1").click(function(){
       $.ajax("",                                 //""里输入服务器地址,下同
         { type:'POST',
           data: {html:1} 
 	  }).done(function (data) {
-        $("#arr_info_1").hide();
+        $("#arr_info_1").fadeOut(800);
       })
     });
   
@@ -58,7 +58,7 @@ $( document ).ready(function() {
         { type:'POST',
           data: {html:-1} 
 	  }).done(function (data) {
-        $("#arr_info_1").hide();
+        $("#arr_info_1").fadeOut(800);
       })
     });
   
@@ -67,19 +67,19 @@ $( document ).ready(function() {
         { type:'POST',
           data: {html:-2} 
 	  }).done(function (data) {
-        $("#arr_info_1").hide();
+        $("#arr_info_1").fadeOut(800);
       })
     });
     
 	if (currentevents > 0) {
-      $("#arr_info_2").show();
+      $("#arr_info_2").fadeIn(1000);
       currentevents = currentevents - 1; 
       $("#accept2").click(function(){
         $.ajax("",                                 //""里输入服务器地址,下同
           { type:'POST',
             data: {html:1} 
 	    }).done(function (data) {
-          $("#arr_info_2").hide();
+          $("#arr_info_2").fadeOut(800);
         })
       });
   
@@ -88,7 +88,7 @@ $( document ).ready(function() {
           { type:'POST',
             data: {html:-1} 
 	    }).done(function (data) {
-          $("#arr_info_2").hide();
+          $("#arr_info_2").fadeOut(800);
         })
       });
   
@@ -97,19 +97,19 @@ $( document ).ready(function() {
           { type:'POST',
             data: {html:-2} 
 	    }).done(function (data) {
-          $("#arr_info_2").hide();
+          $("#arr_info_2").fadeOut(800);
         })
       });
 	  
 	  if (currentevents > 0) {
-        $("#arr_info_3").show();
+        $("#arr_info_3").fadeIn(1000);
         currentevents = currentevents - 1; 
         $("#accept3").click(function(){
           $.ajax("",                                 //""里输入服务器地址,下同
             { type:'POST',
               data: {html:1} 
 	      }).done(function (data) {
-            $("#arr_info_3").hide();
+            $("#arr_info_3").fadeOut(800);
           })
         });
  
@@ -118,7 +118,7 @@ $( document ).ready(function() {
             { type:'POST',
               data: {html:-1} 
 	      }).done(function (data) {
-            $("#arr_info_3").hide();
+            $("#arr_info_3").fadeOut(800);
           })
         });
   
@@ -127,19 +127,19 @@ $( document ).ready(function() {
             { type:'POST',
               data: {html:-2} 
 	      }).done(function (data) {
-            $("#arr_info_3").hide();
+            $("#arr_info_3").fadeOut(800);
           })
         });
 	  
 	    if (currentevents > 0) {
-          $("#arr_info_4").show();
+          $("#arr_info_4").fadeIn(1000);
           currentevents = currentevents - 1; 
           $("#accept4").click(function(){
             $.ajax("",                                 //""里输入服务器地址,下同
               { type:'POST',
                 data: {html:1} 
 	        }).done(function (data) {
-              $("#arr_info_4").hide();
+              $("#arr_info_4").fadeOut(800);
             })
           });
  
@@ -148,7 +148,7 @@ $( document ).ready(function() {
               { type:'POST',
                 data: {html:-1} 
 	        }).done(function (data) {
-              $("#arr_info_4").hide();
+              $("#arr_info_4").fadeOut(800);
             })
           });
   
@@ -157,19 +157,19 @@ $( document ).ready(function() {
               { type:'POST',
                 data: {html:-2} 
 	        }).done(function (data) {
-              $("#arr_info_4").hide();
+              $("#arr_info_4").fadeOut(800);
             })
           });
 		  
 		  if (currentevents > 0) {
-            $("#arr_info_5").show();
+            $("#arr_info_5").fadeIn(1000);
             currentevents = currentevents - 1; 
             $("#accept5").click(function(){
               $.ajax("",                                 //""里输入服务器地址,下同
                 { type:'POST',
                   data: {html:1} 
 	          }).done(function (data) {
-                $("#arr_info_5").hide();
+                $("#arr_info_5").fadeOut(800);
               })
             });
  
@@ -178,7 +178,7 @@ $( document ).ready(function() {
                 { type:'POST',
                   data: {html:-1} 
 	          }).done(function (data) {
-                $("#arr_info_5").hide();
+                $("#arr_info_5").fadeOut(800);
               })
             });
   
@@ -187,7 +187,7 @@ $( document ).ready(function() {
                 { type:'POST',
                   data: {html:-2} 
 	          }).done(function (data) {
-                $("#arr_info_5").hide();
+                $("#arr_info_5").fadeOut(800);
               })
             });
 		  
@@ -199,7 +199,7 @@ $( document ).ready(function() {
 
 //function of postbutton
   $("#postbutton").click(function(){
-  	$("#postform").show();
+  	$("#postform").fadeIn(1000);
   	wp=document.getElementById('Wrapper');
 	wp.style.opacity=0.3;
   });

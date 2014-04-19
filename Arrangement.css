@@ -323,9 +323,9 @@
 	font-style: normal;
 	font-weight: 400;
 	font-size: 8pt;
-	margin-left: 10px;
+	margin-left: 8px;
 	position: relative;
-	left: 67px;
+	left: 46px;
 	top: 79px;
 }
 #dates .dateeven {
@@ -349,7 +349,7 @@
 	left: 159px;
 	border: thin solid #ECECEC;
 	z-index: 1;
-	opacity:0.5
+	opacity: 1
 }
 #sendmsg #receiver {
 	margin-top: 9px;
@@ -417,3 +417,13 @@
 	width: 80px;
 	height: 20px;
 	}
+#arr_info #close_arr_info {
+	position: relative;
+	top: 51px;
+	float: right;
+	left: -58px;
+	text-decoration: underline;
+}
+#arr_info #close_arr_info:hover {
+	color: #DC5D60;
+}
