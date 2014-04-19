@@ -2,56 +2,72 @@ import webapp2
 import json
 from datetime import date
 from google.appengine.ext import ndb
-    
-class Form(ndb.Model):
-    keyWord=ndb.StringProperty()
-    userName=ndb.StringProperty()
-    initAct=ndb.StringProperty()
-    recomAct=ndb.StringProperty()
-    recomDate=ndb.IntegerProperty()
-    groupContent=ndb.StringProperty()
-    
-def saveForm(self):
-    recomDate=int(self.request.get('recomDate'))
-    keyWord=self.request.get('keyWord')
-    userName=self.request.get('userName')
-    initAct=int(self.request.get('initAct'))
-    recomAct=self.request.get('recomAct')
-    form=Form(key=ndb.Key(Form,email),recomDate=recomDate,userName=userName,keyWord=keyWord,initAct=initAct,recomAct=recomAct)
-    form.put()
 
-def saveUsername(self):
-    userName=self.request.get('userName') 
-    query=Form.query(ancestor=ndb.Key(Form,userName))
-    res=query.fetch()
-    if len(res):
-        res=res[0]
-        data={}
-        data['flag']='0'
-        data['initAct']=res.initAct
-        data['recomAct']=res.recomAct
-        data['recomDate']=res.recomDate
-        data['groupContent']=res.groupContent
-        jsonobj=json.dumps(data)
-        self.response.write(jsonobj)
+class Profile(ndb.Model):
+    UserID = ndb.IntegerProperty()
+    Email = ndb.StringProperty()
+    Password = ndb.StringProperty()
+    NickName = ndb.StringProperty()
+    Gender = ndb.StringProperty()
+    UserImagePath = ndb.StringProperty()
+    Invitable = ndb.IntegerProperty()
+    FriendCount = ndb.IntegerProperty()
+    InvitationCount = ndb.IntegerProperty()
+    UnReadInvitCount = ndb.IntegerProperty()
+    ReadInvitCount = ndb.IntegerProperty()
+    IgnoreInvitCount = ndb.IntegerProperty()
+    Signature = ndb.StringProperty()
+    Tel = ndb.StringProperty()
+    
+class Activity(ndb.Model):
+    UserID = ndb.IntegerProperty()
+    ActFlag = ndb.IntegerProperty()
+    InviterID = ndb.IntegerProperty()
+    ActTime = ndb.DateTimeProperty() 
+    Place = ndb.StringProperty()
+    ActContent = ndb.StringProperty()
+    
+class Mail(ndb.Model):
+    UserID = ndb.IntegerProperty()
+    MailFlag = ndb.IntegerProperty()
+    PosterID = ndb.IntegerProperty()
+    PostTime = ndb.DateTimeProperty()
+    MailContent = ndb.StringProperty()
+
+def register(self):
+    email = self.request.get('email')
+    nickname = self.request.get('nickname')
+    firstpassword = self.request.get('firstpassword')
+    repassword = self.request.get('repassword')
+    tel = self.request.get('tel')
+    if firstpassword == repassword:
+        query = Profile.query(ancestor=ndb.Key(Profile, email))
+        res = query.fetch()
+        if len(res):
+            data={}
+            data['flag']='0'
+            data['message']='Register Fail! The Email has already registered.'
+            jsonobj=json.dumps(data)
+            self.response.write(jsonobj)
+        else:
+            first, last = Profile.allocate_ids(1)
+            profile = Profile(key=ndb.Key(Profile, email), UserID=first, NickName=nickname, Password=firstpassword, Tel=tel)
+            profile.put()    
     else:
         data={}
-        data['flag']='1'
+        data['flag']='0'
+        data['message']='Register Fail! The password isnot same.'
         jsonobj=json.dumps(data)
-        self.response.write(jsonobj)
+        self.response.write(jsonobj)    
         
-class EmailHandle(webapp2.RequestHandler):
-    def post(self):
-        saveUsername(self)
-
-class UserHandle(webapp2.RequestHandler):
-    def post(self):
-        saveForm(self)
-
+class RegisterHandle(webapp2.RequestHandler):
+    def get(self):
+        register(self)
+        
 app = webapp2.WSGIApplication([
-  #('/MainPage', MainPage),
-  ('/emailapi',EmailHandle),
-  ('/userapi',UserHandle)
+  ('/register', RegisterHandle)
+ # ('/emailapi', EmailHandle),
+  #('/userapi', UserHandle)
 ])
     
     

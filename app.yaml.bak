@@ -7,13 +7,13 @@ threadsafe: yes
 handlers:
 #  a static file mapping
 - url: /
-  static_files: login.html
-  upload: login.html
+  static_files: index.html
+  upload: index.html
  
  #css style file  
-- url: /login.css
-  static_files: login.css
-  upload: login.css
+- url: /index.css
+  static_files: index.css
+  upload: index.css
    
 - url: .*
   script: main.app

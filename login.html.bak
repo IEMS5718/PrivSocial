@@ -39,7 +39,7 @@ And you will never miss any invites comes from your buddies.</p>
     <p>re-Password: <br><input type="password" required id="repassword" name="repassword"></p>
     <p id="telephone">Telephone: <br><input type="tel" required id="id" name="tel"></p>
 	<p id="emailhint">Email/Username: <br> <input type="email" required id="email" value="" name="email"></p>
-    <input type="submit" id="submit" value="Submit" class="button">   <input type="reset" id="cancel" value="Cancel" class="button">
+    <input type="button" id="submit" value="Submit" class="button">   <input type="reset" id="cancel" value="Cancel" class="button">
     </form>
 </div>
 </body>
