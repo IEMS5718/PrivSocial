@@ -211,5 +211,4 @@ $( document ).ready(function() {
   	wp=document.getElementById('Wrapper');
 	wp.style.opacity=1;
   });
-  
 });

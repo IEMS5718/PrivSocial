@@ -1,9 +1,11 @@
 import webapp2
+import time
 import json
 from gaesessions import get_current_session
 from datetime import date
 from google.appengine.ext import ndb
 from google.appengine.ext.webapp.util import run_wsgi_app
+from datetime import datetime
 
 class Profile(ndb.Model):
     UserID = ndb.IntegerProperty()
@@ -53,7 +55,7 @@ def register(self):
             self.response.write(jsonobj)
         else:
             first, last = Profile.allocate_ids(1)
-            profile = Profile(key=ndb.Key(Profile, email), UserID=first, NickName=nickname, Password=firstpassword, Tel=tel)
+            profile = Profile(key=ndb.Key(Profile, email), UserID=first, NickName=nickname, Password=firstpassword, Tel=tel, Invitable=1)
             profile.put()
             session = get_current_session()
             session['email'] = email
@@ -114,13 +116,56 @@ def getUserInfo(self):
         data['UnReadInvitCount']=re.UnReadInvitCount
         data['ReadInvitCount']=re.ReadInvitCount
         data['IgnoreInvitCount']=re.IgnoreInvitCount
-        data['Signature']=re.Signature       
+        data['Signature']=re.Signature    
+        activitylist=[]
+        queryAct = Activity.query(ancestor=ndb.Key(Profile, re.UserID))
+        resAct = queryAct.fetch()
+        for activity in resAct:
+            activityData={}
+            activityData['UserID']=activity.UserID
+            activityData['ActFlag']=activity.ActFlag 
+            activityData['InviterID']=activity.InviterID 
+            activityData['ActTime']=activity.ActTime 
+            activityData['Place']=activity.Place 
+            activityData['ActContent']=activity.UserID     
+            activitylist.append(activityData)
+        data['activities']=activitylist
         jsonobj=json.dumps(data)
         self.response.write(jsonobj)
     else:
         data['flag']='0'
         data['message']="no user info"
-                      
+        jsonobj=json.dumps(data)
+        self.response.write(jsonobj)
+        
+def postact(self):
+    inventname = self.request.get('inventname')
+    inventdate = self.request.get('inventdate')
+    inventtime = self.request.get('inventtime')
+    inventcontent = self.request.get('inventcontent')
+    participants = self.request.get('participants')
+    participantlist = participants.split(";")
+    for participant in participantlist:
+        query = Profile.query(ancestor=ndb.Key(Profile, participant))
+        res = query.fetch()
+        if len(res):
+            if res[0].Invitable==1:
+                first, last = Profile.allocate_ids(1)
+                session = get_current_session()
+                userID=session.get("userID")
+                inviterID=res[0].UserID
+                a=inventdate+' '+inventtime+':00'
+                format = '%Y-%m-%d %H:%M:%S'
+                x=datetime.strptime(a, format)
+                activity = Activity(key=ndb.Key(Activity, first), UserID=userID, ActFlag=0, InviterID=inviterID, ActTime=x, ActContent=inventcontent)
+                activity.put()        
+        else:
+             data={}
+             data['flag']='0'
+             data['message']="no exist user"
+             jsonobj=json.dumps(data)
+             self.response.write(jsonobj)
+              
 class RegisterHandle(webapp2.RequestHandler):
     def get(self):
         register(self)
@@ -133,10 +178,15 @@ class UserHandle(webapp2.RequestHandler):
     def post(self):
         getUserInfo(self)
         
+class PostactHandle(webapp2.RequestHandler):
+    def post(self):
+        postact(self)
+        
 app = webapp2.WSGIApplication([
   ('/register', RegisterHandle),
   ('/login', LoginHandle),
-  ('/userapi', UserHandle)
+  ('/userapi', UserHandle),
+  ('/postact',PostactHandle)
 ])
     
     

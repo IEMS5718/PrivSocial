@@ -27,6 +27,15 @@ handlers:
  #js style file  
 - url: /javascript
   static_dir: javascript
+  
+ #js style file  
+- url: /jQueryAssets
+  static_dir: jQueryAssets
+  
+ #css style file  
+- url: /index.css
+  static_files: index.css
+  upload: index.css
    
 - url: .*
   script: main.app

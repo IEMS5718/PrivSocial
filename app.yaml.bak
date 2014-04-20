@@ -25,9 +25,13 @@ handlers:
   upload: login.css
   
  #js style file  
-- url: /javascript/login.js
-  static_files: login.js
-  upload: login.js
+- url: /javascript
+  static_dir: javascript
+  
+ #css style file  
+- url: /index.css
+  static_files: index.css
+  upload: index.css
    
 - url: .*
   script: main.app
