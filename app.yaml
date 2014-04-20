@@ -9,11 +9,24 @@ handlers:
 - url: /
   static_files: login.html
   upload: login.html
+  
+#  a static file mapping
+- url: /index.html
+  static_files: index.html
+  upload: index.html 
+  
+# images
+- url: /Images
+  static_dir: Images
  
  #css style file  
 - url: /login.css
   static_files: login.css
   upload: login.css
+  
+ #js style file  
+- url: /javascript
+  static_dir: javascript
    
 - url: .*
   script: main.app

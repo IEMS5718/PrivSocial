@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Untitled Document</title>
-<link href="/login.css" rel="stylesheet" type="text/css">
+<link href="./login.css" rel="stylesheet" type="text/css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>  
 </head>
@@ -23,9 +23,9 @@ You will have an unforgettable journey with your friends through FilmSoci.<br>
 And you will never miss any invites comes from your buddies.</p>
 </div>
 <div id="logindiv">
-<form>
-<input type="email" id="username" placeholder="Email Address">
-<input type="password" id="password" placeholder="Password">
+<form action="/login">
+<input type="email" id="username" placeholder="Email Address" name="email">
+<input type="password" id="password" placeholder="Password" name="password">
 <input type="submit" id="login" value="login">
 </form>
 <div id="formbackground"></div>
