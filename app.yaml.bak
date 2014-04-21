@@ -15,6 +15,16 @@ handlers:
   static_files: index.html
   upload: index.html 
   
+#  a static file mapping
+- url: /Arrangment.html
+  static_files: Arrangment.html
+  upload: Arrangment.html 
+  
+#  a static file mapping
+- url: /Profile.html
+  static_files: Profile.html
+  upload: Profile.html 
+  
 # images
 - url: /Images
   static_dir: Images
@@ -28,10 +38,24 @@ handlers:
 - url: /javascript
   static_dir: javascript
   
+ #js style file  
+- url: /jQueryAssets
+  static_dir: jQueryAssets
+  
  #css style file  
 - url: /index.css
   static_files: index.css
   upload: index.css
+  
+ #css style file  
+- url: /profile.css
+  static_files: profile.css
+  upload: profile.css
+  
+#css style file  
+- url: /Arrangement.css
+  static_files: Arrangement.css
+  upload: Arrangement.css
    
 - url: .*
   script: main.app
