@@ -43,8 +43,12 @@
     <h1>Profile</h1>
     <p><img id="Headdisplay" src=""></p>
     <div id="user_profile">
-    <form id="user_profile_form">
-    <p id="nickname">Nickname: <br><input type="text" id="nickname"></p>
+    	<form id="saveimage" method="post" action='/saveimage' enctype="multipart/form-data" >
+    	    <p id="headupdate">Update Head: <br> <input type="file" id="headupdate" size="16px" name="file"> <p id="buttoncover" class="button">Choose File<p></p>
+    	    	<input type="submit" value="upload"></input>
+    	 </form>
+    <form id="user_profile_form" action='/saveprofile'>
+    <p id="nickname">Nickname: <br><input type="text" id="nickname" name="nickname"></p>
     <p id="gender">Gender: <br>     
       <label>
         <input type="radio" name="Gender" value="Male" id="Gender_0">
@@ -54,20 +58,19 @@
         Female</label>
       <br>
     </p>
-	 <p id="signature">Signature: <br> <textarea ></textarea></p>
-    <p id="telephone">Telephone: <br><input type="tel" id="id"></p>
-    <p id="headupdate">Update Head: <br> <input type="file" id="headupdate" size="16px"> <p id="buttoncover" class="button">Choose File<p></p>
+	 <p id="signature">Signature: <br> <textarea name="signature"></textarea></p>
+    <p id="telephone">Telephone: <br><input type="tel" id="id" name="telephone"></p>
     <p>Agree to be Invited: <br>       
     <label>
-        <input type="radio" name="Gender" value="Yes" id="Invited_0">
+        <input type="radio" name="invitable" value="Yes" id="Invited_0">
         Yes</label>      
       <label>
-        <input type="radio" name="Gender" value="No" id="Invited_1">
+        <input type="radio" name="invitable" value="No" id="Invited_1">
         No</label>
       <br>
     </p>
-	<p id="emailhint">Email/Username: <br> <input type="email" id="email" value=""></p>
-    <p id="formbuttons"><input type="button" id="update" value="Update" class="button">   <input type="reset" id="reset" value="Reset" class="button"></p>
+	<p id="emailhint">Email/Username: <br> <input type="email" id="email" value="" name="emailhint"></p>
+    <p id="formbuttons"><input type="submit" id="update" value="Update" class="button">   <input type="reset" id="reset" value="Reset" class="button"></p>
     </form>
     </div>
   </div>

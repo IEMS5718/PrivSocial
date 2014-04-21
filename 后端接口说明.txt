@@ -24,6 +24,20 @@ Actflag 要设置成什么状态，就把他设置成对应的值。
 提交的参数，receiver表示活动发起人的email
 msgcontent即为内容。
 
+7./getmailinfo
+说明：返回用户邮件，参数mailinfo=1，返回已读邮件列表
+参数mailinfo=0，返回未读邮件列表
+在index.html head里有一个js作为例子
+
+8./saveprofile
+说明：表单已自动提交。
+
+9./saveimage
+说明：上传图片
+
+10./getimage
+说明：需要显示图片时，image标签的source直接等于该路径即可。
+
 所有api返回参数说明，flag=1表示返回成功
 flag=0表示返回失败，相关提示信息在message里面。
 有什么问题请自行alert返回值看一下。

@@ -7,6 +7,7 @@ from datetime import datetime
 from google.appengine.ext import ndb
 from google.appengine.ext.webapp.util import run_wsgi_app
 from datetime import datetime
+from google.appengine.ext import blobstore
 
 class Profile(ndb.Model):
     UserID = ndb.IntegerProperty()
@@ -16,13 +17,15 @@ class Profile(ndb.Model):
     Gender = ndb.StringProperty()
     UserImagePath = ndb.StringProperty()
     Invitable = ndb.IntegerProperty()
-    FriendCount = ndb.IntegerProperty()
-    InvitationCount = ndb.IntegerProperty()
-    UnReadInvitCount = ndb.IntegerProperty()
-    ReadInvitCount = ndb.IntegerProperty()
-    IgnoreInvitCount = ndb.IntegerProperty()
+    FriendCount = ndb.IntegerProperty(default=0)
+    InvitationCount = ndb.IntegerProperty(default=0)
+    UnReadInvitCount = ndb.IntegerProperty(default=0)
+    ReadInvitCount = ndb.IntegerProperty(default=0)
+    IgnoreInvitCount = ndb.IntegerProperty(default=0)
+    ImageData = ndb.BlobProperty()
     Signature = ndb.StringProperty()
     Tel = ndb.StringProperty()
+    mimetype = ndb.StringProperty()
     
 class Activity(ndb.Model):
     UserID = ndb.IntegerProperty()
@@ -112,13 +115,21 @@ def getUserInfo(self):
         data['Email']=re.Email
         data['Tel']=re.Tel
         data['NickName']=re.NickName
-        data['UserImagePath']=re.UserImagePath
         data['Invitable']=re.Invitable
         data['FriendCount']=re.FriendCount
         data['Gender']=re.Gender
-        data['UnReadInvitCount']=re.UnReadInvitCount
-        data['ReadInvitCount']=re.ReadInvitCount
-        data['IgnoreInvitCount']=re.IgnoreInvitCount
+        query = Activity.query(Activity.UserID == re.UserID, Activity.ActFlag == -1)
+        res = query.fetch()
+        data['RejectInvitCount']=len(res)
+        query = Activity.query(Activity.UserID == re.UserID, Activity.ActFlag == 1)
+        res = query.fetch()
+        data['AcceptInvitCount']=len(res)
+        query = Activity.query(Activity.UserID == re.UserID, Activity.ActFlag == -2)
+        res = query.fetch()
+        data['IgnoreInvitCount']=len(res)
+        query = Activity.query(Activity.UserID == re.UserID, Activity.ActFlag == 0)
+        res = query.fetch()
+        data['UnReadInvitCount']=len(res)
         data['Signature']=re.Signature    
         activitylist=[]
         queryAct = Activity.query(Activity.UserID == re.UserID)
@@ -131,7 +142,10 @@ def getUserInfo(self):
             activityData['InviterID']=activity.InviterID 
             activityData['ActTime']=activity.ActTime.strftime('%b-%d-%y %H:%M:%S') 
             activityData['Place']=activity.Place 
-            activityData['ActContent']=activity.UserID     
+            activityData['ActContent']=activity.UserID
+            queryA = Profile.query(Profile.UserID == activity.InviterID)
+            resA = queryA.fetch()
+            activityData['InviterEmail']=resA[0].Email  
             activitylist.append(activityData)
         data['activities']=activitylist
         jsonobj=json.dumps(data)
@@ -156,8 +170,8 @@ def postact(self):
             if res[0].Invitable==1:
                 first, last = Profile.allocate_ids(1)
                 session = get_current_session()
-                userID=session.get("userID")
-                inviterID=res[0].UserID
+                inviterID = session.get("userID")
+                userID=res[0].UserID
                 a=inventdate+' '+inventtime+':00'
                 format = '%Y-%m-%d %H:%M:%S'
                 x=datetime.strptime(a, format)
@@ -214,7 +228,109 @@ def negotiate(self):
         data['message']="no sender exist"
         jsonobj=json.dumps(data)
         self.response.write(jsonobj)
-                
+        
+def getmailinfo(self):
+    mailinfo = self.request.get('mailinfo')
+    if mailinfo=='1':   #already read message
+        data={}
+        data['flag']='1'
+        data['mailinfo']= mailinfo
+        maillist=[]
+        session = get_current_session()
+        userID=session.get('userID')
+        queryMail = Mail.query(Mail.UserID == userID)
+        resMail = queryMail.fetch()
+        for mail in resMail:
+            if mail.MailFlag==1:
+                mailData={}
+                mailData['MailContent']=mail.MailContent
+                mailData['MailID']=mail.MailID
+                mailData['MailFlag']=mail.MailFlag 
+                mailData['PostTime']=mail.PostTime.strftime('%b-%d-%y %H:%M:%S') 
+                maillist.append(mailData)
+        data['mails']=maillist
+        jsonobj=json.dumps(data)
+        self.response.write(jsonobj)
+    if mailinfo=='0':   # unread message
+        data={}
+        data['flag']='1'
+        data['mailinfo']= mailinfo
+        maillist=[]
+        session = get_current_session()
+        userID=session.get('userID')
+        queryMail = Mail.query(Mail.UserID == userID)
+        resMail = queryMail.fetch()
+        for mail in resMail:
+            if mail.MailFlag==0:
+                mailData={}
+                mailData['MailContent']=mail.MailContent
+                mailData['MailID']=mail.MailID
+                mailData['MailFlag']=mail.MailFlag 
+                mailData['PostTime']=mail.PostTime.strftime('%b-%d-%y %H:%M:%S') 
+                maillist.append(mailData)
+                mail.MailFlag=1
+                mail.put()
+        data['mails']=maillist
+        jsonobj=json.dumps(data)
+        self.response.write(jsonobj)
+        
+def saveprofile(self):
+    nickname = self.request.get('nickname')
+    Gender = self.request.get('Gender')
+    signature = self.request.get('signature')
+    telephone = self.request.get('telephone')
+    emailhint = self.request.get('emailhint')
+    invitable = self.request.get('invitable')
+    session = get_current_session()
+    userID=session.get('userID')
+    queryProfile = Profile.query(Profile.UserID == userID)
+    resProfile = queryProfile.fetch()
+    if len(resProfile):
+        profile=resProfile[0]
+        profile.NickName=nickname
+        profile.Signature=signature
+        profile.Tel=telephone
+        profile.Gender=Gender
+        profile.Invitable=1
+        if invitable=='No':
+            profile.Invitable=0
+        profile.Email=emailhint
+        profile.put()
+        Data={}
+        Data['flag']='1'
+        Data['message']="update success"
+        jsonobj=json.dumps(Data)
+        self.response.write(jsonobj)
+    else:
+        Data={}
+        Data['flag']='0'
+        Data['message']="update fail"
+        jsonobj=json.dumps(Data)
+        self.response.write(jsonobj)
+        
+def saveimage(self):
+    session = get_current_session()
+    userID=session.get('userID')
+    queryProfile = Profile.query(Profile.UserID == userID)
+    resProfile = queryProfile.fetch()
+    if len(resProfile):
+        file = self.request.POST['file']
+        profile=resProfile[0]
+        profile.ImageData = file.value
+        profile.mimetype=file.type
+        profile.put()
+        self.redirect('/Profile.html')
+        
+def getimage(self):
+    session = get_current_session()
+    userID=session.get('userID')
+    queryProfile = Profile.query(Profile.UserID == userID)
+    resProfile = queryProfile.fetch()
+    if len(resProfile):
+        profile=resProfile[0]
+        self.response.headers['Content-Type'] = str(profile.mimetype)
+        self.response.out.write(profile.ImageData)
+    
 class RegisterHandle(webapp2.RequestHandler):
     def get(self):
         register(self)
@@ -239,6 +355,22 @@ class NegotiateHandle(webapp2.RequestHandler):
     def post(self):
         negotiate(self)
         
+class GetMailInfoHandle(webapp2.RequestHandler):
+    def post(self):
+        getmailinfo(self)
+        
+class SaveProfileHandle(webapp2.RequestHandler):
+    def get(self):
+        saveprofile(self)
+        
+class SaveImageHandle(webapp2.RequestHandler):
+    def post(self):
+        saveimage(self)
+        
+class GetImageHandle(webapp2.RequestHandler):
+    def get(self):
+        getimage(self)
+        
 app = webapp2.WSGIApplication([
   ('/register', RegisterHandle),
   ('/login', LoginHandle),
@@ -246,6 +378,10 @@ app = webapp2.WSGIApplication([
   ('/postact',PostactHandle),
   ('/changeact', ChangeActHandle),
   ('/negotiate',NegotiateHandle),
+  ('/getmailinfo',GetMailInfoHandle),
+  ('/saveprofile',SaveProfileHandle),
+  ('/saveimage',SaveImageHandle),
+  ('/getimage',GetImageHandle)
 ])
     
     

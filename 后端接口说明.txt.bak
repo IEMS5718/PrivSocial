@@ -26,3 +26,4 @@ msgcontent即为内容。
 
 所有api返回参数说明，flag=1表示返回成功
 flag=0表示返回失败，相关提示信息在message里面。
+有什么问题请自行alert返回值看一下。

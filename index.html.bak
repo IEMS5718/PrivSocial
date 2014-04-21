@@ -19,6 +19,11 @@ $(document).ready(function(){
 	         alert(data) ;
 	          },"text");
 	          
+	       
+	       $.post('/getmailinfo',{'mailinfo':0},
+        function(data){     
+	         alert(data) ;
+	          },"text");
 	          
 	          
 $('#post').on('click',function(){
@@ -37,16 +42,7 @@ $('#accept1').on('click',function(){
 	         alert(data) ;
 	          },"text");   
 	          });
-
-
-$('#send').on('click',function(){
-	alert('123');
-	     $.post('/changeact',{'receiver':$('#receiver').val(),'msgcontent':$('#msgconteng').val()},
-        function(data){     
-	         alert(data) ;
-	          },"text");   
-	          });
-	          
+          
 	          
 	          
 	        });
