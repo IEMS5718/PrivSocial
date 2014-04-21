@@ -1,0 +1,28 @@
+1./register   
+说明：表单已自动提交，前端不用再响应提交按钮。
+
+2./login
+说明：表单已自动提交，前端不用再响应提交按钮。
+
+3./userapi
+说明：index.html head里有一个js，响应了提交按钮。 返回的数据已经alert出来。
+返回的数据包括：
+账户基本信息
+账户相关活动信息：activities是一个数组，里面每一个数组项对应一个活动信息。
+
+4./postact
+说明：index.html head里有一个js作为例子。
+提交的数据包括通过表单序列化方式给出
+
+5./changeact
+说明：id为accept1的按钮在index.html head 里有一个js作为例子
+提交的参数，ActivityID在userapi返回的activity数据里面包括该参数
+Actflag 要设置成什么状态，就把他设置成对应的值。
+
+6./negotiate
+说明：在arrangement.html head里有一个js作为例子
+提交的参数，receiver表示活动发起人的email
+msgcontent即为内容。
+
+所有api返回参数说明，flag=1表示返回成功
+flag=0表示返回失败，相关提示信息在message里面。

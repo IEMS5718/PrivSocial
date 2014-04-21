@@ -13,7 +13,7 @@ $(document).ready(function(){
 	
 	$('#send').on('click',function(){
 	alert('123');
-	     $.post('/negotiate',{'receiver':$('#receiver').val(),'msgcontent':$('#msgcontent').val()},
+	     $.post('/negotiate',{'receiver':$('#receiver').val(),'msgcontent':$('#msgconteng').val()},
         function(data){     
 	         alert(data) ;
 	          },"text");   

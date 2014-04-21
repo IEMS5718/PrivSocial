@@ -1,8 +1,9 @@
 import webapp2
 import time
 import json
+import datetime
 from gaesessions import get_current_session
-from datetime import date
+from datetime import datetime
 from google.appengine.ext import ndb
 from google.appengine.ext.webapp.util import run_wsgi_app
 from datetime import datetime
@@ -30,6 +31,7 @@ class Activity(ndb.Model):
     ActTime = ndb.DateTimeProperty() 
     Place = ndb.StringProperty()
     ActContent = ndb.StringProperty()
+    ActivityID = ndb.IntegerProperty()
     
 class Mail(ndb.Model):
     UserID = ndb.IntegerProperty()
@@ -37,6 +39,7 @@ class Mail(ndb.Model):
     PosterID = ndb.IntegerProperty()
     PostTime = ndb.DateTimeProperty()
     MailContent = ndb.StringProperty()
+    MailID = ndb.IntegerProperty()
 
 def register(self):
     email = self.request.get('email')
@@ -55,7 +58,7 @@ def register(self):
             self.response.write(jsonobj)
         else:
             first, last = Profile.allocate_ids(1)
-            profile = Profile(key=ndb.Key(Profile, email), UserID=first, NickName=nickname, Password=firstpassword, Tel=tel, Invitable=1)
+            profile = Profile(key=ndb.Key(Profile, email), UserID=first, NickName=nickname, Password=firstpassword, Tel=tel, Invitable=1, Email=email)
             profile.put()
             session = get_current_session()
             session['email'] = email
@@ -118,14 +121,15 @@ def getUserInfo(self):
         data['IgnoreInvitCount']=re.IgnoreInvitCount
         data['Signature']=re.Signature    
         activitylist=[]
-        queryAct = Activity.query(ancestor=ndb.Key(Profile, re.UserID))
+        queryAct = Activity.query(Activity.UserID == re.UserID)
         resAct = queryAct.fetch()
         for activity in resAct:
             activityData={}
+            activityData['ActivityID']=activity.ActivityID
             activityData['UserID']=activity.UserID
             activityData['ActFlag']=activity.ActFlag 
             activityData['InviterID']=activity.InviterID 
-            activityData['ActTime']=activity.ActTime 
+            activityData['ActTime']=activity.ActTime.strftime('%b-%d-%y %H:%M:%S') 
             activityData['Place']=activity.Place 
             activityData['ActContent']=activity.UserID     
             activitylist.append(activityData)
@@ -157,7 +161,7 @@ def postact(self):
                 a=inventdate+' '+inventtime+':00'
                 format = '%Y-%m-%d %H:%M:%S'
                 x=datetime.strptime(a, format)
-                activity = Activity(key=ndb.Key(Activity, first), UserID=userID, ActFlag=0, InviterID=inviterID, ActTime=x, ActContent=inventcontent)
+                activity = Activity(key=ndb.Key(Activity, first), UserID=userID, ActivityID=first, ActFlag=0, InviterID=inviterID, ActTime=x, ActContent=inventcontent)
                 activity.put()        
         else:
              data={}
@@ -165,7 +169,52 @@ def postact(self):
              data['message']="no exist user"
              jsonobj=json.dumps(data)
              self.response.write(jsonobj)
-              
+             
+def changeact(self):
+    ActivityID = int(self.request.get('ActivityID'))
+    Actflag = int(self.request.get('Actflag'))
+    queryAct = Activity.query(Activity.ActivityID == ActivityID)
+    resAct = queryAct.fetch()
+    if len(resAct):
+        res=resAct[0]
+        res.ActFlag=Actflag
+        res.put()
+        data={}
+        data['flag']='1'
+        data['message']="succeeeful"
+        jsonobj=json.dumps(data)
+        self.response.write(jsonobj)
+    else:
+        data={}
+        data['flag']='0'
+        data['message']="act not exist"
+        jsonobj=json.dumps(data)
+        self.response.write(jsonobj)
+        
+def negotiate(self):
+    receiver = self.request.get('receiver')
+    msgcontent = self.request.get('msgcontent')
+    session = get_current_session()
+    PosterID=session.get('userID')
+    queryAct = Profile.query(Profile.Email == receiver)
+    resAct = queryAct.fetch()
+    if len(resAct):
+        userID=resAct[0].UserID
+        first, last = Profile.allocate_ids(1)
+        mail = Mail(key=ndb.Key(Mail, first), UserID=userID, MailFlag=0, PosterID=PosterID, PostTime=datetime.now(), MailContent=msgcontent, MailID=first)
+        mail.put()
+        data={}
+        data['flag']='1'
+        data['message']="send successful"
+        jsonobj=json.dumps(data)
+        self.response.write(jsonobj)      
+    else:
+        data={}
+        data['flag']='0'
+        data['message']="no sender exist"
+        jsonobj=json.dumps(data)
+        self.response.write(jsonobj)
+                
 class RegisterHandle(webapp2.RequestHandler):
     def get(self):
         register(self)
@@ -182,11 +231,21 @@ class PostactHandle(webapp2.RequestHandler):
     def post(self):
         postact(self)
         
+class ChangeActHandle(webapp2.RequestHandler):
+    def post(self):
+        changeact(self)
+        
+class NegotiateHandle(webapp2.RequestHandler):
+    def post(self):
+        negotiate(self)
+        
 app = webapp2.WSGIApplication([
   ('/register', RegisterHandle),
   ('/login', LoginHandle),
   ('/userapi', UserHandle),
-  ('/postact',PostactHandle)
+  ('/postact',PostactHandle),
+  ('/changeact', ChangeActHandle),
+  ('/negotiate',NegotiateHandle),
 ])
     
     
