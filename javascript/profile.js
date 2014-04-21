@@ -24,8 +24,23 @@ $( document ).ready(function() {
   $('#month').html(showmonth);
 
   $("#reset").click(function(){
-  alert('#nickname');
-  $('#nickname').html('');
+    $('#nickname').value('');
+    $('#signature').value('');
+    $('#telephone').value('');
+    $('#email').value('');
+  });
+  
+  $("#update").click(function(){
+    var nn = $('#nickname2').val();
+	var sn = $('#s').val();
+	var tel = $('#id').val();
+	var em = $('#email').val();
+    if(nn=="" && sn=="" && tel=="" && em=="") {
+	  alert('Please at least type something');
+	}
+	else {
+	  $("#user_profile_form").submit();                    //服务器地址在id=user_profile_form的action=“”里面加
+	}  
   });
 
 });
