@@ -38,6 +38,27 @@ msgcontent即为内容。
 10./getimage
 说明：需要显示图片时，image标签的source直接等于该路径即可。
 
+返回参数说明：
+activities：活动 是一个数组  
+包含参数【ActTime：活动时间 ActContent：活动内容  InviterID：活动发起人ID  place：活动地点 UserID：被邀请人ID ActFlag：活动标记位，0表示未处理该活动，-1表示拒绝邀请，1表示接受邀请，-2表示忽略邀请  InviterEmail：活动发起人email  ActivityID：活动编号】
+Gender：性别
+Email：当前登录的用户的email
+Signature：当前用户的signature
+NickName：当前用户的NickName
+UserID：当前用户的ID
+Tel：当前用户的电话
+Invitable： 0表示拒绝被其他用户邀请，1表示可以被其他用户邀请
+FriendCount：当前用户的好友总数
+AcceptInvitCount：接受了活动邀请的总数
+UnreadInvitCount：未处理的活动邀请总数
+IgnoreInvitCount：忽略活动邀请的总数
+RejectInvitCount：拒绝邀请的活动总数
+mails:邮件 是一个数组
+包含参数【PostTime：邮件发布日期及时间  MailFlag：1表示已读邮件，与mailinfo意思一样 0表示未读邮件 MailID：邮件ID MailContent：邮件内容】
+参数mailinfo=1，返回已读邮件列表，参数mailinfo=0，返回未读邮件列表
+
+
 所有api返回参数说明，flag=1表示返回成功
 flag=0表示返回失败，相关提示信息在message里面。
 有什么问题请自行alert返回值看一下。
+
