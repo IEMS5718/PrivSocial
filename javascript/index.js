@@ -8,7 +8,7 @@ $( document ).ready(function() {
   $("#arr_info_6").hide();
   $("#postform").hide();
   
- // $('#user_info_name').load("");                          //""里输入服务器地址,下同
+ // $('#user_info_name').load("");                          //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
  // $('#user_info').load("");
  // $('#current').load("");
  
@@ -37,24 +37,51 @@ $( document ).ready(function() {
   month[11]="December.";
   var showmonth = month[date.getMonth()];
   $('#month').html(showmonth);
+                    
+  //you need to declare currentevents as Global Variable so that you can change it in the function
+  var currentevents;
+  //get the data structure from server
+  $.post('/userapi',{},
+        function(data){
+         var obj = jQuery.parseJSON(data);
+         currentevents = obj.UnReadInvitCount;
+         $("#current").html('Current invites: ' + currentevents);
+         $("#user_info_name").html(obj.NickName + ' (' + obj.UserID + ')' );
+         display();
+        },"text");
+                    
+                    
+  $.post('/getmailinfo',{'mailinfo':1},
+        function(data){     
+        alert(data) ;
+        },"text");
 
-  var currentevents = 5;  
-  $("#current").html('Current invites: ' + currentevents);
-  
+                    
+function display(){
   if (currentevents > 0) {
     $("#arr_info_1").fadeIn(1000);
+    $.post('/userapi',{},
+      function(data){
+       var obj1 = jQuery.parseJSON(data);
+       inviter = obj1.InviterID;
+	   time = obj1.ActTime;
+	   content = obj1.ActContent;
+	   alert(obj1.ActTime);
+       $("#arr_invitor1").html(inviter);
+       $("#arr_time1").html(time);
+	   $("#arr_content1").html(content);
+      },"text");
     currentevents = currentevents - 1; 
     $("#accept1").click(function(){
-      $.ajax("",                                 //""里输入服务器地址,下同
-        { type:'POST',
-          data: {html:1} 
-	  }).done(function (data) {
-        $("#arr_info_1").fadeOut(800);
-      })
+         $.post('/changeact',{'ActivityID':1003,'Actflag':-1},
+         function(data){
+         alert(data) ;
+         },"text");
+          //......
     });
   
     $("#reject1").click(function(){
-      $.ajax("",                                 //""里输入服务器地址,下同
+      $.ajax("",                                 //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
         { type:'POST',
           data: {html:-1} 
 	  }).done(function (data) {
@@ -63,7 +90,7 @@ $( document ).ready(function() {
     });
   
     $("#ignore1").click(function(){
-      $.ajax("",                                  //""里输入服务器地址,下同
+      $.ajax("",                                  //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
         { type:'POST',
           data: {html:-2} 
 	  }).done(function (data) {
@@ -75,7 +102,7 @@ $( document ).ready(function() {
       $("#arr_info_2").fadeIn(1000);
       currentevents = currentevents - 1; 
       $("#accept2").click(function(){
-        $.ajax("",                                 //""里输入服务器地址,下同
+        $.ajax("",                                 //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
           { type:'POST',
             data: {html:1} 
 	    }).done(function (data) {
@@ -84,7 +111,7 @@ $( document ).ready(function() {
       });
   
       $("#reject2").click(function(){
-        $.ajax("",                                 //""里输入服务器地址,下同
+        $.ajax("",                                 //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
           { type:'POST',
             data: {html:-1} 
 	    }).done(function (data) {
@@ -93,7 +120,7 @@ $( document ).ready(function() {
       });
   
       $("#ignore2").click(function(){
-        $.ajax("",                                  //""里输入服务器地址,下同
+        $.ajax("",                                  //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
           { type:'POST',
             data: {html:-2} 
 	    }).done(function (data) {
@@ -105,7 +132,7 @@ $( document ).ready(function() {
         $("#arr_info_3").fadeIn(1000);
         currentevents = currentevents - 1; 
         $("#accept3").click(function(){
-          $.ajax("",                                 //""里输入服务器地址,下同
+          $.ajax("",                                 //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
             { type:'POST',
               data: {html:1} 
 	      }).done(function (data) {
@@ -114,7 +141,7 @@ $( document ).ready(function() {
         });
  
         $("#reject3").click(function(){
-          $.ajax("",                                 //""里输入服务器地址,下同
+          $.ajax("",                                 //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
             { type:'POST',
               data: {html:-1} 
 	      }).done(function (data) {
@@ -123,7 +150,7 @@ $( document ).ready(function() {
         });
   
         $("#ignore3").click(function(){
-          $.ajax("",                                  //""里输入服务器地址,下同
+          $.ajax("",                                  //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
             { type:'POST',
               data: {html:-2} 
 	      }).done(function (data) {
@@ -135,7 +162,7 @@ $( document ).ready(function() {
           $("#arr_info_4").fadeIn(1000);
           currentevents = currentevents - 1; 
           $("#accept4").click(function(){
-            $.ajax("",                                 //""里输入服务器地址,下同
+            $.ajax("",                                 //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
               { type:'POST',
                 data: {html:1} 
 	        }).done(function (data) {
@@ -144,7 +171,7 @@ $( document ).ready(function() {
           });
  
           $("#reject4").click(function(){
-            $.ajax("",                                 //""里输入服务器地址,下同
+            $.ajax("",                                 //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
               { type:'POST',
                 data: {html:-1} 
 	        }).done(function (data) {
@@ -153,7 +180,7 @@ $( document ).ready(function() {
           });
   
           $("#ignore4").click(function(){
-            $.ajax("",                                  //""里输入服务器地址,下同
+            $.ajax("",                                  //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
               { type:'POST',
                 data: {html:-2} 
 	        }).done(function (data) {
@@ -165,7 +192,7 @@ $( document ).ready(function() {
             $("#arr_info_5").fadeIn(1000);
             currentevents = currentevents - 1; 
             $("#accept5").click(function(){
-              $.ajax("",                                 //""里输入服务器地址,下同
+              $.ajax("",                                 //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
                 { type:'POST',
                   data: {html:1} 
 	          }).done(function (data) {
@@ -174,7 +201,7 @@ $( document ).ready(function() {
             });
  
             $("#reject5").click(function(){
-              $.ajax("",                                 //""里输入服务器地址,下同
+              $.ajax("",                                 //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
                 { type:'POST',
                   data: {html:-1} 
 	          }).done(function (data) {
@@ -183,7 +210,7 @@ $( document ).ready(function() {
             });
   
             $("#ignore5").click(function(){
-              $.ajax("",                                  //""里输入服务器地址,下同
+              $.ajax("",                                  //""驴脭聽鈥奥幻庘垜藳艗脪鈭喫溌得棵封垜,艙卢脮篓
                 { type:'POST',
                   data: {html:-2} 
 	          }).done(function (data) {
@@ -196,16 +223,22 @@ $( document ).ready(function() {
 	  }
 	}
   }
-
+                    }
+					
 //function of postbutton
   $("#postbutton").click(function(){
   	$("#postform").fadeIn(1000);
   	wp=document.getElementById('Wrapper');
-	wp.style.opacity=0.3;
-	
-	        
+	wp.style.opacity=0.3;	        
   });
 
+  $('#post').on('click',function(){
+	     alert($('#postform').serialize());
+	 $.post('/postact',$('#postform').serialize(),
+        function(data){     
+	          },"text");
+    });
+  
   $("#close").click(function(){
   	$("#postform").hide();
   	wp=document.getElementById('Wrapper');
