@@ -60,7 +60,8 @@ $( document ).ready(function() {
 					spdate = date.split(" "); //先分割时间和日期
 					strdate = spdate[0].split("-")[1];		//得到日期string
 					intdate = parseInt(strdate);
-					if(intdate == showdate){
+					if(obj['activities'][i].ActFlag == 1){
+					if(intdate == showdate ){
 							$('#date1').css('opacity',1);
 							$('#datebutton1').css('opacity',1);
 							$('#datebutton1').attr('id', intdate);
@@ -101,7 +102,8 @@ $( document ).ready(function() {
 							$('#date7').css('opacity',1);
 							$('#datebutton7').css('opacity',1);
 							$('#datebutton7').attr('id', intdate);
-						}								
+						}
+					}
 					}
           },"text");	
 		   	

@@ -142,7 +142,7 @@ def getUserInfo(self):
             activityData['InviterID']=activity.InviterID 
             activityData['ActTime']=activity.ActTime.strftime('%b-%d-%y %H:%M:%S') 
             activityData['Place']=activity.Place 
-            activityData['ActContent']=activity.UserID
+            activityData['ActContent']=activity.ActContent
             queryA = Profile.query(Profile.UserID == activity.InviterID)
             resA = queryA.fetch()
             activityData['InviterEmail']=resA[0].Email  

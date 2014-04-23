@@ -55,14 +55,15 @@ $( document ).ready(function() {
                $("#mine_current_arrange").html('Current arrange: ' + currentarr);
                $("#user_info_name").html(obj.NickName + ' (' + obj.UserID + ')' );
                $("#mine_name").html(obj.NickName);
-               
+			    $("#arr_content").html('Email: ' + obj.Email);
+               $("#arr_tel").html('Tel: ' + obj.Tel);
                //*VERY IMPORTANT : alert(obj['activities'][1].ActTime);               
                display(obj);
            },"text");
     
     //  $.post('/getmailinfo',{'mailinfo':1},
     //        function(data){
-    //        alert(data) ;
+    //        
     //        },"text");
     
            
@@ -73,7 +74,7 @@ $( document ).ready(function() {
 		$('input').click(function(){
 			if(currentevents == 0){
 				$('#nothing_hint').fadeIn(800);
-				}							
+				}						
 			});
 	
         if (currentevents > 0 && object['activities'][0].ActFlag == 0) {
@@ -84,25 +85,30 @@ $( document ).ready(function() {
             $('#arr_content1').html(object['activities'][0].ActContent);
             $("#accept1").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][0].ActivityID,'Actflag':1},
-                       function(data){
-                           alert(data);
+                       function(data){                           
                            $("#arr_info_1").fadeOut(800);
+						  			if(currentevents == 0){
+				$('#nothing_hint').fadeIn(800);
+				}	 
                        },"text");
             });
             
             $("#reject1").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][0].ActivityID,'Actflag':-1},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_1").fadeOut(800);
+						   location.reload(true);	
+
                        },"text");
             });
             
             $("#ignore1").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][0].ActivityID,'Actflag':-2},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_1").fadeOut(800);
+								location.reload(true);	
                        },"text");
             });
         }
@@ -112,29 +118,32 @@ $( document ).ready(function() {
                 currentevents = currentevents - 1;
                 $('#arr_invitor2').html('Invitor ID: ' + object['activities'][1].InviterID);
                 $('#arr_time2').html(object['activities'][1].ActTime);
-                $('#arr_content2').html(object['activities'][1].ActContent);
+				  document.getElementById('arr_content2').innerHTML(object['activities'][1].ActContent);
                 
              $("#accept2").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][1].ActivityID,'Actflag':1},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_2").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
             
             $("#reject2").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][1].ActivityID,'Actflag':-1},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_2").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
             
             $("#ignore2").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][1].ActivityID,'Actflag':-2},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_2").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
             }
@@ -148,24 +157,27 @@ $( document ).ready(function() {
             $("#accept3").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][2].ActivityID,'Actflag':1},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_3").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
             
             $("#reject3").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][2].ActivityID,'Actflag':-1},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_3").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
             
             $("#ignore3").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][2].ActivityID,'Actflag':-2},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_3").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
                 }
@@ -179,24 +191,27 @@ $( document ).ready(function() {
             $("#accept4").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][3].ActivityID,'Actflag':1},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_4").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
             
             $("#reject4").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][3].ActivityID,'Actflag':-1},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_4").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
             
             $("#ignore4").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][3].ActivityID,'Actflag':-2},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_4").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
                     }
@@ -210,24 +225,27 @@ $( document ).ready(function() {
             $("#accept5").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][4].ActivityID,'Actflag':1},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_5").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
             
             $("#reject5").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][4].ActivityID,'Actflag':-1},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_5").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
             
             $("#ignore5").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][4].ActivityID,'Actflag':-2},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_5").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
                             
@@ -242,24 +260,27 @@ $( document ).ready(function() {
             $("#accept6").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][5].ActivityID,'Actflag':1},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_6").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
             
             $("#reject6").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][5].ActivityID,'Actflag':-1},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_6").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
             
             $("#ignore6").click(function(){
                 $.post('/changeact',{'ActivityID':object['activities'][5].ActivityID,'Actflag':-2},
                        function(data){
-                           alert(data);
+                           
                            $("#arr_info_6").fadeOut(800);
+						   			location.reload(true);	
                        },"text");
             });
                             
