@@ -38,7 +38,6 @@ $( document ).ready(function() {
     var showmonth = month[date.getMonth()];
     $('#month').html(showmonth);
     document.getElementById("user_info_head_img").src="/getimage";
-
     
     
     //you need to declare currentevents as Global Variable so that you can change it in the function
@@ -49,6 +48,8 @@ $( document ).ready(function() {
                var obj = jQuery.parseJSON(data);
                currentevents = obj.UnReadInvitCount;
                $("#current").html('Current invites: ' + currentevents);
+               var currentarr = obj.RejectInvitCount + obj.AcceptInvitCount + obj.IgnoreInvitCount;
+               $("#mine_current_arrange").html('Current arrange: ' + currentarr);
                $("#user_info_name").html(obj.NickName + ' (' + obj.UserID + ')' );
                $("#mine_name").html(obj.NickName);
                

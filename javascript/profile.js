@@ -23,6 +23,7 @@ $( document ).ready(function() {
   var showmonth = month[date.getMonth()];
   $('#month').html(showmonth);
   document.getElementById("Headdisplay").src="/getimage";
+  document.getElementById("user_info_head_img").src="/getimage";
 	$.post('/userapi',{},
            function(data){
                var obj = jQuery.parseJSON(data);
