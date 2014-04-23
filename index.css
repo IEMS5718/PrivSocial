@@ -44,10 +44,11 @@ html, body {height: 100%;
 	position: relative;
 	top: -39px;
 	left: 39px;
+	cursor:pointer;
 }
 #user_info {
 	width: 100px;
-	left: 92%;
+	left: 90%;
 	position: absolute;
 	top: 7px;
 	border-radius: 0px;
@@ -161,10 +162,11 @@ html, body {height: 100%;
 	height: 20%;
 	min-height: 150px;
 	position: relative;
-	margin:0 auto;
+	margin: 0 auto;
 	top: 20%;
 	left: 9%;
 	background-color: #E8E8E8;
+	font-size: 9pt;
 }
 #Rightline #mine {
 	color: #9F9E9E;
@@ -272,11 +274,11 @@ html, body {height: 100%;
 	position: relative;
 	margin-left: 10%;
 	margin-right: 10%;
-	top:5%;
+	top: 5%;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 12pt;
+	font-size: 10pt;
 	line-height: 8px;
 }
 .arr_info:hover {

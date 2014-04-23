@@ -39,7 +39,6 @@ $( document ).ready(function() {
 		   
 		$.post('/getimage', {},
 			function(data){
-				alert(data);
 				}, 'text');		   
 
 
@@ -60,10 +59,13 @@ $( document ).ready(function() {
 	}
 	else {
 	  $("#user_profile_form").submit();     
-	  alert('success');       
+	  $("#update").attr("value", "Success");      
 	  //服务器地址在id=user_profile_form的action=“”里面加
 	}  
   });
-
+  
+	$('#user_info_name').click(function(){
+		window.location.href="/";
+		});
 //2014-04-23 temp pause
 });

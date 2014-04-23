@@ -296,7 +296,6 @@ $( document ).ready(function() {
     });
     
     $('#post').on('click',function(){
-        alert($('#postform').serialize());
         $.post('/postact',$('#postform').serialize(),
                function(data){
                    $("#postform").fadeOut(600);
@@ -305,6 +304,10 @@ $( document ).ready(function() {
 				     location.reload(true);	    				
                },"text");
     });
+
+	$('#user_info_name').click(function(){
+		window.location.href="/";
+		});
     
     $("#close").click(function(){
         $("#postform").hide();

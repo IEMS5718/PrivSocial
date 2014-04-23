@@ -154,11 +154,20 @@ $( document ).ready(function() {
 		$("#arr_info").css("opacity",1);
 	
 	});//点击close，发送框关闭
+	$('#send').on('click',function(){
+	     $.post('/negotiate',{'receiver':$('#receiver').val(),'msgcontent':$('#msgcontent').val()},
+        function(data){ 
+			$("#sendmsg").fadeOut(800);
+			$("#arr_info").css("opacity",1);    
+	          },"text");   
+	      });
 
 	$('#invite_address').click(function(){
 		var invitormail = document.getElementById("invite_address").innerHTML;
 		$('#receiver').attr('value', invitormail);		
 		});
 	
-	
+	$('#user_info_name').click(function(){
+		window.location.href="/";
+		});	
 });

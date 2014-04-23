@@ -43,6 +43,7 @@ html, body {height: 100%;
 	position: relative;
 	top: -39px;
 	left: 39px;
+	cursor:pointer;
 }
 #user_info {
 	width: 100px;

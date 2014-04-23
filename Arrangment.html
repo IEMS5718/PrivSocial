@@ -71,10 +71,12 @@ button.id=id+time; 这句很关键，根据time动态设置id，比如今天是4
       <p id="close_arr_info">close</p>
 	</div>
     <div id="sendmsg">
+    <form id="sendmsgform" action="/negotiate" method="post">
     <input type="text" id="receiver" placeholder="Receiver"><br>
     <textarea id="msgcontent" placeholder="Content"></textarea><br>
     <input type="button" class="button" name="send" id="send" value="send">		
     <input type="button" class="button" name="send" id="close" value="close"> 
+    </form>
     </div>
   </div>
   </div>
