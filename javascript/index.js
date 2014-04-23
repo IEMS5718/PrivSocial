@@ -50,6 +50,8 @@ $( document ).ready(function() {
                currentevents = obj.UnReadInvitCount;
                $("#current").html('Current invites: ' + currentevents);
                $("#user_info_name").html(obj.NickName + ' (' + obj.UserID + ')' );
+               $("#mine_name").html(obj.NickName);
+               
                //*VERY IMPORTANT : alert(obj['activities'][1].ActTime);
                
                display(obj);
