@@ -329,9 +329,7 @@ def getimage(self):
     if len(resProfile):
         profile=resProfile[0]
         self.response.headers['Content-Type'] = str(profile.mimetype)
-        data['ImageData'] = profile.ImageData
-        jsonobj=json.dumps(data)
-        self.response.out.write(jsonobj)
+        self.response.out.write(profile.ImageData)
     
 class RegisterHandle(webapp2.RequestHandler):
     def get(self):

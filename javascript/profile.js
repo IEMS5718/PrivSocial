@@ -62,10 +62,4 @@ $( document ).ready(function() {
   });
 
 //2014-04-23 temp pause
-	$("#upload").click(function(){
-		$.post('/saveimage', {'file': $('#headupdate').val()},
-			function(data){
-				alert(data);
-				}, 'text');
-	});
 });

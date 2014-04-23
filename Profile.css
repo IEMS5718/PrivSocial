@@ -117,7 +117,7 @@ html, body {height: 100%;
 	text-decoration: none;
 	font-style: normal;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-weight: 500;
+	font-weight: 400;
 	letter-spacing: 0.5px;
 }
 #Navi .naviul li a:hover {
@@ -246,7 +246,7 @@ html, body {height: 100%;
 #user_profile_form #signature textarea {
 	margin-top: 9px;
 	margin-bottom: 9px;
-	padding-right: 412px;
+	padding-right: 418px;
 	resize: none;
 	border-radius: 5px;
 	border-spacing: 1px 1px;
