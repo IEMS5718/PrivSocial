@@ -36,6 +36,7 @@ $( document ).ready(function() {
     month[11]="December.";
     var showmonth = month[date.getMonth()];
     $('#month').html(showmonth);
+	document.getElementById("user_info_head_img").src="/getimage";
 	$('#date1').html(showdate + ', ' + showmonth + ' ' + showyear);
 	$('#date2').html(showdate+1 + ', ' + showmonth + ' ' + showyear);
 	$('#date3').html(showdate+2 + ', ' + showmonth + ' ' + showyear);
@@ -63,60 +64,43 @@ $( document ).ready(function() {
 							$('#date1').css('opacity',1);
 							$('#datebutton1').css('opacity',1);
 							$('#datebutton1').attr('id', intdate);
-							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][0%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
-							$('#invite_address').html(obj['activities'][0%obj['activities'].length].InviterEmail);
-							$('#invite_info').html(obj['activities'][0%obj['activities'].length].Actcontent);
+
 														
 						}
 					if(intdate == showdate+1){
 							$('#date2').css('opacity',1);
 							$('#datebutton2').css('opacity',1);
 							$('#datebutton2').attr('id', intdate);
-							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][1%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
-							$('#invite_address').html(obj['activities'][1%obj['activities'].length].InviterEmail);
-							$('#invite_info').html(obj['activities'][1%obj['activities'].length].Actcontent);								
+							
 						}					
 					if(intdate == showdate+2){
 							$('#date3').css('opacity',1);
 							$('#datebutton3').css('opacity',1);
 							$('#datebutton3').attr('id', intdate);
-							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][2%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
-							$('#invite_address').html(obj['activities'][2%obj['activities'].length].InviterEmail);
-							$('#invite_info').html(obj['activities'][2%obj['activities'].length].Actcontent);	
+
 						}
 					if(intdate == showdate+3){
 							$('#date4').css('opacity',1);
 							$('#datebutton4').css('opacity',1);
 							$('#datebutton4').attr('id', intdate);
-							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][3%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
-							$('#invite_address').html(obj['activities'][3%obj['activities'].length].InviterEmail);
-							$('#invite_info').html(obj['activities'][3%obj['activities'].length].Actcontent);	
+
 						}
 					if(intdate == showdate+4){
 							$('#date5').css('opacity',1);
 							$('#datebutton5').css('opacity',1);
-							$('#datebutton5').attr('id', intdate);
-							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][4%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
-							$('#invite_address').html(obj['activities'][4%obj['activities'].length].InviterEmail);
-							$('#invite_info').html(obj['activities'][4%obj['activities'].length].Actcontent);								
+							$('#datebutton5').attr('id', intdate);						
 						}
 					if(intdate == showdate+5){
 
 							$('#date6').css('opacity',1);
 							$('#datebutton6').css('opacity',1);
-							$('#datebutton6').attr('id', intdate);
-							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][5%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
-							$('#invite_address').html(obj['activities'][5%obj['activities'].length].InviterEmail);
-							$('#invite_info').html(obj['activities'][5%obj['activities'].length].Actcontent);								
+							$('#datebutton6').attr('id', intdate);							
 						}
 						
 					if(intdate == showdate+6){
 							$('#date7').css('opacity',1);
 							$('#datebutton7').css('opacity',1);
 							$('#datebutton7').attr('id', intdate);
-							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][6%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
-							$('#invite_address').html(obj['activities'][6%obj['activities'].length].InviterEmail);
-							$('#invite_info').html(obj['activities'][6%obj['activities'].length].Actcontent);	
 						}								
 					}
           },"text");	
@@ -129,6 +113,27 @@ $( document ).ready(function() {
 	
 	$(".datebutton").click(function(){
 		$("#arr_info").fadeIn(800);	
+		buttonid = this.id;
+		$.post('/userapi',{},
+          function(data){
+			  	var obj = jQuery.parseJSON(data);
+				for(var i=0;i<(obj['activities'].length);i++){	
+					var date = obj['activities'][i].ActTime;
+					var spdate = new Array();
+					spdate = date.split(" "); //先分割时间和日期
+					strdate = spdate[0].split("-")[1];		//得到日期string
+					intdate = parseInt(strdate);
+					if(buttonid == intdate){
+						$('#invite_name_time').html("Inviter ID: "+ obj['activities'][i].InviterID + " " + obj['activities'][i].ActTime);
+						$('#invite_address').html(obj['activities'][i].InviterEmail);	
+						$('#invite_info').html(obj['activities'][0].Actcontent);					
+					}
+				}		  
+			  
+			  
+			  }, 'text');
+		
+		
 	});//点一下圆按钮出现框框
 	$("#close_arr_info").click(function(){
 		$("#arr_info").fadeOut(800);
