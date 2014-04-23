@@ -8,19 +8,6 @@
 <script src="jQueryAssets/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script src="jQueryAssets/jquery-ui-1.9.2.button.custom.min.js" type="text/javascript"></script><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/actor:n4:default.js" type="text/javascript"></script>
 <script src="javascript/Arrangement.js" type="text/javascript"></script>
-<script>
-$(document).ready(function(){	
-	
-	$('#send').on('click',function(){
-	alert('123');
-	     $.post('/negotiate',{'receiver':$('#receiver').val(),'msgcontent':$('#msgcontent').val()},
-        function(data){     
-	         alert(data) ;
-	          },"text");   
-	          });
-	       });    
-	</script>
-
 </head>
 
 <body>
