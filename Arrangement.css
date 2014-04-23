@@ -452,3 +452,7 @@ html, body {height: 100%;
 #arr_info #close_arr_info:hover {
 	color: #DC5D60;
 }
+#invite_address:hover {
+	cursor: pointer;
+ 	color: #000000;
+}

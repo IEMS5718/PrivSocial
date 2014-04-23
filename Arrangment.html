@@ -62,17 +62,17 @@ $(document).ready(function(){
   <p class="dateodd" id="date7"></p>
   </div>
   	<div id="datebuttons">
-  	<input type="button" class="datebutton" name="datebutton"> 
+  	<input type="button" class="datebutton" name="datebutton" id="datebutton1"> 
     <!--注意，这个id需要根据当前的时间动态变化，用一个js实现就可以了var button=document.body.getElementsByName("button")[x];
 //根据name获取所有button对象，这个x自己注意，分别对应0~6
 button.id=id+time; 这句很关键，根据time动态设置id，比如今天是4月18日，那么id就应该为0418。因为7个按钮分别对应今天，以及接下来的6天
 同时，有活动的话记得在动态赋值id后，使用button2=getElementsByid("~~~")来设置相应的CSS内容button2.style.display为inline，因为默认的按钮都是none状态的，这里为了在开发时候方便，没有设置为none-->
-	<input type="button" class="datebutton" name="datebutton"> 
-	<input type="button" class="datebutton" name="datebutton"> 
-	<input type="button" class="datebutton" name="datebutton"> 
-	<input type="button" class="datebutton" name="datebutton"> 
-	<input type="button" class="datebutton" name="datebutton">
-    <input type="button" class="datebutton" name="datebutton"> 
+	<input type="button" class="datebutton" name="datebutton" id="datebutton2"> 
+	<input type="button" class="datebutton" name="datebutton" id="datebutton3"> 
+	<input type="button" class="datebutton" name="datebutton" id="datebutton4"> 
+	<input type="button" class="datebutton" name="datebutton" id="datebutton5"> 
+	<input type="button" class="datebutton" name="datebutton" id="datebutton6">
+    <input type="button" class="datebutton" name="datebutton" id="datebutton7"> 
 	</div>
   <hr id="line">
   	<div id="arr_info"> <!-- 这个div是弹出的窗口，只需要用js改变style.display就可以了，初始为none，点击上面的某个按钮后，会改变为inline。当然，下面的几个<p>的内容也需要相应的改变，内容是为被点击按钮对应的日期里的所有活动信息-->
@@ -80,7 +80,7 @@ button.id=id+time; 这句很关键，根据time动态设置id，比如今天是4
       <input type="button" class="button" name="negotiate" id="negotiate" value="negotiate"> 
       <p id="invite_address">Invite address</p>
       <hr id="line2">
-      <p id="invite_info">Invite info</p>
+      <p id="invite_info">No more Details</p>
       <p id="close_arr_info">close</p>
 	</div>
     <div id="sendmsg">
