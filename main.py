@@ -301,6 +301,7 @@ def saveprofile(self):
         Data['message']="update success"
         jsonobj=json.dumps(Data)
         self.response.write(jsonobj)
+        self.redirect('/Profile.html') 
     else:
         Data={}
         Data['flag']='0'
