@@ -201,7 +201,15 @@ html, body {height: 100%;
 /*以上这部分为模版固定的CSS，不同页面均适用，已调整为自适应浏览器尺寸*/
 /*-------------------------------------------------------------------*/
 #Content h2 {
-	
+	margin-left: auto;
+	margin-right: auto;
+	position: absolute;
+	top: 50%;
+	left: 43%;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #ABA9A9;
+	font-size: xx-large;
+	font-weight: 500;
 }
 
 #postbutton {
@@ -282,11 +290,9 @@ html, body {height: 100%;
 }
 .arr_info input {
 	position: relative;
-	top: 80px;
-	left: 1px;
-	margin-left: 30px;
-	width: 12%;
-	height: 12%;
+	top: 69px;
+	left: 50px;
+	margin-left: 15px;
 }
 
 #postform {
@@ -409,3 +415,31 @@ html, body {height: 100%;
 	padding-bottom: 1px;
 	cursor:pointer;
 }
+.acceptbutton {
+	background-image: url(Images/Accept.gif);
+	border-spacing: 1px 1px;
+	border: thin solid #92979B;
+	width: 30px;
+	height: 30px;
+	border-radius: 3px;
+	cursor:pointer;
+}
+
+.rejectbutton{
+	background-image: url(Images/Reject.gif);
+	border-spacing: 1px 1px;
+	border: thin solid #92979B;
+	width: 30px;
+	height: 30px;
+	border-radius: 3px;
+	cursor:pointer;	
+	}
+.ignorebutton{
+	background-image: url(Images/Ignore.gif);
+	border-spacing: 1px 1px;
+	border: thin solid #92979B;
+	width: 30px;
+	height: 30px;
+	border-radius: 3px;	
+	cursor:pointer;	
+	}

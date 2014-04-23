@@ -55,8 +55,6 @@ $( document ).ready(function() {
     //        function(data){
     //        alert(data) ;
     //        },"text");
-    
-    
     function display(object){
         if (currentevents > 0 && object['activities'][0].ActFlag == 0) {
             $("#arr_info_1").fadeIn(1000);
