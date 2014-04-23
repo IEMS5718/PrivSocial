@@ -41,16 +41,20 @@
   <div id="Rightline">  </div>
   <div id="Content">
     <h1>Profile</h1>
-    <p><img id="Headdisplay" src=""></p>
+    <p><img id="Headdisplay" src="Images/u=2272587471,1704352936&fm=23&gp=0.jpg" width="110px" height="110px"></p>
     <div id="user_profile">
+    
     	<form id="saveimage" method="post" action='/saveimage' enctype="multipart/form-data" >
-    	    <p id="headupdate">Update Head: <br> <input type="file" id="headupdate" size="16px" name="file"> <p id="buttoncover" class="button">Choose File<p></p>
-    	    	<input type="submit" value="upload"></input>
+    	  <p id="headupdatehint">Update Photo: <br> <input type="file" id="headupdate" size="16px" name="file"> 
+         <p id="buttoncover" class="button">Choose File<p></p>
+    	  <input type="submit" value="upload" class="button" id="upload"></input>
     	 </form>
+         
     <form id="user_profile_form" action='/saveprofile'>
-    <p id="nickname">Nickname: <br><input type="text" id="nickname" name="nickname"></p>
-    <form id="user_profile_form">
-    <p id="nickname">Nickname: <br><input type="text" id="nickname2"></p>
+    <p id="emailhint">Email/Username: <br> <input type="email" id="email" value="" name="emailhint"></p>
+    <p id="nickname">Nickname: <br><input type="text" id="nickname2" name="nickname"></p>    
+	 <p id="signature">Signature: <br> <textarea name="signature" id="sig"></textarea></p>
+    <p id="telephone">Telephone: <br><input type="tel" id="tel" name="telephone"></p>
     <p id="gender">Gender: <br>     
       <label>
         <input type="radio" name="Gender" value="Male" id="Gender_0">
@@ -58,14 +62,10 @@
       <label>
         <input type="radio" name="Gender" value="Female" id="Gender_1">
         Female</label>
-      <br>
+      
     </p>
-	 <p id="signature">Signature: <br> <textarea name="signature"></textarea></p>
-    <p id="telephone">Telephone: <br><input type="tel" id="id" name="telephone"></p>
-	 <p id="signature">Signature: <br> <textarea id="s"></textarea></p>
-    <p id="telephone">Telephone: <br><input type="tel" id="id"></p>
-    <p id="headupdate">Update Head: <br> <input type="file" id="headupdate" size="16px"> <p id="buttoncover" class="button">Choose File<p></p>
-    <p>Agree to be Invited: <br>       
+
+    <p id="agtoinv">Agree to be Invited: <br>       
     <label>
         <input type="radio" name="invitable" value="Yes" id="Invited_0">
         Yes</label>      
@@ -74,7 +74,7 @@
         No</label>
       <br>
     </p>
-	<p id="emailhint">Email/Username: <br> <input type="email" id="email" value="" name="emailhint"></p>
+
     <p id="formbuttons"><input type="submit" id="update" value="Update" class="button">   <input type="reset" id="reset" value="Reset" class="button"></p>
     </form>
     </div>

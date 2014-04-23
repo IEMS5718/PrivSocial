@@ -22,18 +22,36 @@ $( document ).ready(function() {
   month[11]="December.";
   var showmonth = month[date.getMonth()];
   $('#month').html(showmonth);
+	$.post('/userapi',{},
+           function(data){
+               var obj = jQuery.parseJSON(data);
+               currentevents = obj.UnReadInvitCount;
+               $("#current").html('Current invites: ' + currentevents);
+               $("#user_info_name").html(obj.NickName + ' (' + obj.UserID + ')' );
+               //*VERY IMPORTANT : alert(obj['activities'][1].ActTime);
+               $("#email").val(obj.Email);
+			    $("#nickname2").val(obj.NickName);
+				 $("#sig").val(obj.Signature);
+				 $("#tel").val(obj.Tel);
+           },"text");
+		   
+		$.post('/getimage', {},
+			function(data){
+				alert(data);
+				}, 'text');		   
+
 
   $("#reset").click(function(){
-    $('#nickname').value('');
-    $('#signature').value('');
-    $('#telephone').value('');
+    $('#nickname2').value('');
+    $('#sig').value('');
+    $('#tel').value('');
     $('#email').value('');
   });
   
   $("#update").click(function(){
     var nn = $('#nickname2').val();
-	var sn = $('#s').val();
-	var tel = $('#id').val();
+	var sn = $('#sig').val();
+	var tel = $('#tel').val();
 	var em = $('#email').val();
     if(nn=="" && sn=="" && tel=="" && em=="") {
 	  alert('Please at least type something');
@@ -43,4 +61,11 @@ $( document ).ready(function() {
 	}  
   });
 
+//2014-04-23 temp pause
+	$("#upload").click(function(){
+		$.post('/saveimage', {'file': $('#headupdate').val()},
+			function(data){
+				alert(data);
+				}, 'text');
+	});
 });

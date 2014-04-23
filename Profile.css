@@ -1,8 +1,15 @@
 @charset "UTF-8";
+/*以下这部分为模版固定的CSS，不同页面均适用，已调整为自适应浏览器尺寸*/
+html, body {height: 100%;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 #Wrapper {
+	position: relative;
 	margin-left: auto;
 	margin-right: auto;
-	position: relative;
+	opacity:1;
+	height:100%;
 }
 #Topline h2 {
 	background-color: #393A3C;
@@ -15,14 +22,11 @@
 	padding-right: 5px;
 	padding-bottom: 12px;
 	padding-left: 30px;
-	margin-bottom: 0px;
 	position: static;
 	list-style-type: none;
-	width: 1000px;
 	letter-spacing: 1px;
+	width: 100%;
 }
-
-
 #user_info_head_img {
 	border-spacing: 1px 1px;
 	border-color: #373737;
@@ -35,14 +39,14 @@
 	color: #737373;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 400;
-	font-size: small;
+	font-size: 10pt;
 	position: relative;
 	top: -39px;
 	left: 39px;
 }
 #user_info {
-	width: 140px;
-	left: 896px;
+	width: 100px;
+	left: 92%;
 	position: absolute;
 	top: 7px;
 	border-radius: 0px;
@@ -51,62 +55,62 @@
 #Leftline {
 	background-color: #191718;
 	color: #FBF9F9;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	width: 180px;
-	height: 600px;
+	width: 225px;
+	height:90%;
 	position: relative;
 	float: left;
 	font-size: 9pt;
+	top: -11px;
 }
 #Leftline_top {
-	width: 180px;
-	height: 100px;
+	width: 100%;
+	height: 15%;
+	min-height: 140px;
 	background-color: #F65857;
 	float: left;
 }
 #Leftline_top #current {
-	top: 41px;
+	top: 48%;
 	position: relative;
-	left: 30px;
+	left: 18%;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	opacity: 0.8;
-	font-size: x-small;
+	font-size: 11pt;
 	letter-spacing: 1px;
 }
 #Leftline_top #day {
-	left: 28px;
+	left: 18%;
 	position: absolute;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 40pt;
+	font-size: 50pt;
 	top: -33px;
 	letter-spacing: 0px;
 }
 #Leftline_top #month {
 	position: relative;
-	top: 0px;
-	left: 30px;
-	opacity: 0.5;
+	top: 3%;
+	left: 20%;
+	opacity: 0.8;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-variant: normal;
+	font-size:10pt;
 	letter-spacing: 1px;
 }
 #Navi ul {
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 600;
-	font-size: small;
+	font-size: 11pt;
 	line-height: 25px;
 	color: #3F3F3F;
 	float: left;
 	position: relative;
-	top: 12px;
-	left: 5px;
+	top: 50%;
+	left: 5%;
 }
 #Navi .naviul li a  {
 	color: #575757;
@@ -114,19 +118,21 @@
 	font-style: normal;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 500;
-	letter-spacing: -0.5px;
+	letter-spacing: 0.5px;
 }
 #Navi .naviul li a:hover {
 	color: #BDBDBD;
+	position: relative;
 }
 #Navi .naviul #space {
 	position: relative;
-	top: 10px;
-	left: -15px;
+	top: 50%;
+	left: -16%;
 }
 #profile {
 	list-style-image: url(Images/ico_profile.png);
 	list-style-position: outside;
+
 }
 #activity {
 	list-style-image: url(Images/ico_act.png);
@@ -137,23 +143,27 @@
 	list-style-position: outside;
 }
 #Rightline {
-	width: 180px;
-	height: 600px;
-	position: absolute;
+	width: 225px;
+	height:90%;
+	position: relative;
+	top:-1.31%;
+	left:0.5%;
+	float:right;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	background-color: #F5F4F4;
-	left: 855px;
-	float: left;
-	top: 40px;
+
 }
 #my_profile {
-	width: 150px;
-	height: 150px;
+	width: 80%;
+	height: 20%;
+	min-height: 150px;
 	position: relative;
-	top: 90px;
-	left: 9px;
+	margin:0 auto;
+	top: 20%;
+	left: 9%;
+	background-color: #E8E8E8;
 }
 #Rightline #mine {
 	color: #9F9E9E;
@@ -162,44 +172,55 @@
 	font-weight: 400;
 	font-size: 22pt;
 	position: relative;
-	left: 13px;
-	top: 119px;
+	top: 22%;
+	left: 12%;
 }
 #my_profile #arr_header {
 	background-color: #E84BA2;
 }
 #Content {
-	width: 685px;
-	height: 500px;
-	float: left;
-	display: block;
+	margin:0 auto;
+	width: 70%;
+	height: 80%;
+
 }
 #Content h1 {
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: xx-large;
-	margin-left: 50px;
-	margin-top: 19px;
+	font-size: 40pt;
+	position:absolute;
+	left:23%;
 	-webkit-box-shadow: inset 0px 0px;
 	box-shadow: inset 0px 0px;
 	color: #8F8E8E;
+	width: 29px;
 }
+
+/*以上这部分为模版固定的CSS，不同页面均适用，已调整为自适应浏览器尺寸*/
+/*-------------------------------------------------------------------*/
 #Content h2 {
 	position: static;
 }
 #Content #user_profile {
-	width: 400px;
+	width: 600px;
 	position: relative;
-	left: 51px;
-	top: -32px;
 	color: #4B4B4B;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: small;
 	font-weight: bold;
+	margin-left: auto;
+	margin-right: auto;
+	top: -15px;
+	left: -74px;
+	padding-left: 6px;
+}
+#user_profile_form #nickname {
+	position: relative;
+	top: -2px;
 }
 
-#user_profile_form #nickname #nickname2{
+#nickname2{
 	margin-top: 9px;
 	margin-bottom: 9px;
 	padding-right: 450px;
@@ -210,6 +231,7 @@
 	border: 1px solid #A6A6A6;
 	-webkit-box-shadow: 0px 1px 3px #E0DFDF;
 	box-shadow: 0px 1px 3px #E0DFDF;
+	padding-left: 6px;
 }
 #user_profile_form #gender label {
 	position: relative;
@@ -218,6 +240,8 @@
 }
 #user_profile_form #signature {
 	margin-top: 29px;
+	top: -26px;
+	position: relative;
 }
 #user_profile_form #signature textarea {
 	margin-top: 9px;
@@ -230,7 +254,7 @@
 	-webkit-box-shadow: 0px 1px 3px #E0DFDF;
 	box-shadow: 0px 1px 3px #E0DFDF;
 }
-#user_profile_form #telephone #id {
+#user_profile_form #telephone #tel {
 	margin-top: 9px;
 	margin-bottom: 9px;
 	padding-top: 5px;
@@ -241,15 +265,30 @@
 	border: 1px solid #A6A6A6;
 	-webkit-box-shadow: 0px 1px 3px #E0DFDF;
 	box-shadow: 0px 1px 3px #E0DFDF;
+	padding-left: 6px;
 }
-#user_profile_form #headupdate #headupdate {
+#user_profile_form #telephone {
+	position: relative;
+	top: -37px;
+}
+#headupdate {
 	margin-top: 9px;
 	margin-bottom: 9px;
 	opacity: 0;
+	position: relative;
+	z-index: 1;
+	top: 4px;
+	left: 3px;
 }
-#user_profile_form #buttoncover {
+
+#buttoncover {
 	position: absolute;
-	top: 307px;
+	top: 11px;
+	background-color: #F65657;
+	width: 80px;
+	height: 20px;
+	padding-bottom: 3px;
+	left: 9px;
 }
 
 #user_profile_form p label {
@@ -259,10 +298,9 @@
 }
 #user_profile_form #emailhint {
 	position: relative;
-	top: 18px;
+	top: 6px;
 }
 #user_profile_form #email {
-	position: relative;
 	margin-top: 9px;
 	margin-bottom: 9px;
 	padding-top: 5px;
@@ -273,6 +311,16 @@
 	border: 1px solid #A6A6A6;
 	-webkit-box-shadow: 0px 1px 3px #E0DFDF;
 	box-shadow: 0px 1px 3px #E0DFDF;
+	padding-left: 6px;
+}
+#user_profile_form #gender {
+	position: relative;
+	top: -44px;
+}
+#user_profile_form #agtoinv {
+	position: relative;
+	top: -88px;
+	left: 448px;
 }
 #user_profile_form #formbuttons {
 	position: relative;
@@ -295,12 +343,17 @@
 	border: thin solid #D0CECE;
 	padding-top: 3px;
 	padding-bottom: 1px;
+	cursor:pointer;
 	}
 #user_profile_form #formbuttons #update {
 	background-color: #F65657;
 	width: 80px;
 	height: 20px;
 	padding-bottom: 22px;
+	position: relative;
+	top: 480px;
+	z-index: 1;
+	left: -244px;
 }
 #user_profile_form #formbuttons #update:hover {
 	background-color: #FC0202;
@@ -314,10 +367,37 @@
 	margin-left: 27px;
 	padding-bottom: 22px;
 	z-index: 1;
+	top: 480px;
+	left: -160px;
 }
 
 #user_profile_form #formbuttons #reset:hover {
 	background-color: #FC0202;
 	width: 80px;
 	height: 20px;
+}
+#Content #Headdisplay {
+	border-spacing: 2px 2px;
+	border: 3px dotted #C3C3C3;
+	border-radius: 60px;
+	position: relative;
+	top: 101px;
+	left: 78%;
+	z-index: 1;
+}
+#saveimage #upload {
+	background-color: #F65657;
+	width: 80px;
+	height: 20px;
+	padding-bottom: 23px;
+	position: absolute;
+	top: 118px;
+	left: 683px;
+	z-index: 2;
+}
+#saveimge #upload:hover{
+	background-color: #FC0202;
+	}
+#user_profile_form p {
+	margin-top: 2%;
 }

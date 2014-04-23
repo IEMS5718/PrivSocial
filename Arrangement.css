@@ -1,9 +1,15 @@
 @charset "UTF-8";
+/*以下这部分为模版固定的CSS，不同页面均适用，已调整为自适应浏览器尺寸*/
+html, body {height: 100%;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 #Wrapper {
+	position: relative;
 	margin-left: auto;
 	margin-right: auto;
-	position: relative;
-	width: 100%;
+	opacity:1;
+	height:100%;
 }
 #Topline h2 {
 	background-color: #393A3C;
@@ -16,14 +22,11 @@
 	padding-right: 5px;
 	padding-bottom: 12px;
 	padding-left: 30px;
-	margin-bottom: 0px;
 	position: static;
 	list-style-type: none;
-	width: 1000px;
 	letter-spacing: 1px;
+	width: 100%;
 }
-
-
 #user_info_head_img {
 	border-spacing: 1px 1px;
 	border-color: #373737;
@@ -36,14 +39,14 @@
 	color: #737373;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 400;
-	font-size: small;
+	font-size: 10pt;
 	position: relative;
 	top: -39px;
 	left: 39px;
 }
 #user_info {
-	width: 140px;
-	left: 896px;
+	width: 100px;
+	left: 92%;
 	position: absolute;
 	top: 7px;
 	border-radius: 0px;
@@ -52,63 +55,62 @@
 #Leftline {
 	background-color: #191718;
 	color: #FBF9F9;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	width: 180px;
-	height: 600px;
+	width: 225px;
+	height:90%;
 	position: relative;
 	float: left;
 	font-size: 9pt;
+	top: -11px;
 }
 #Leftline_top {
-	width: 180px;
-	height: 100px;
+	width: 100%;
+	height: 15%;
+	min-height: 140px;
 	background-color: #F65857;
 	float: left;
 }
 #Leftline_top #current {
-	top: 41px;
+	top: 48%;
 	position: relative;
-	left: 30px;
+	left: 18%;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	opacity: 0.8;
-	font-size: x-small;
+	font-size: 11pt;
 	letter-spacing: 1px;
 }
 #Leftline_top #day {
-	left: 28px;
+	left: 18%;
 	position: absolute;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 40pt;
+	font-size: 50pt;
 	top: -33px;
 	letter-spacing: 0px;
 }
 #Leftline_top #month {
 	position: relative;
-	top: 0px;
-	left: 30px;
-	opacity: 0.5;
+	top: 3%;
+	left: 20%;
+	opacity: 0.8;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-variant: normal;
+	font-size:10pt;
 	letter-spacing: 1px;
 }
 #Navi ul {
-	list-style-type: none;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 600;
-	font-size: small;
+	font-size: 11pt;
 	line-height: 25px;
 	color: #3F3F3F;
 	float: left;
 	position: relative;
-	top: 12px;
-	left: 5px;
+	top: 50%;
+	left: 5%;
 }
 #Navi .naviul li a  {
 	color: #575757;
@@ -116,7 +118,7 @@
 	font-style: normal;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 500;
-	letter-spacing: -0.5px;
+	letter-spacing: 0.5px;
 }
 #Navi .naviul li a:hover {
 	color: #BDBDBD;
@@ -124,12 +126,13 @@
 }
 #Navi .naviul #space {
 	position: relative;
-	top: 10px;
-	left: -15px;
+	top: 50%;
+	left: -16%;
 }
 #profile {
 	list-style-image: url(Images/ico_profile.png);
 	list-style-position: outside;
+
 }
 #activity {
 	list-style-image: url(Images/ico_act.png);
@@ -140,23 +143,27 @@
 	list-style-position: outside;
 }
 #Rightline {
-	width: 180px;
-	height: 600px;
-	position: absolute;
+	width: 225px;
+	height:90%;
+	position: relative;
+	top:-1.31%;
+	left:0.5%;
+	float:right;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	background-color: #F5F4F4;
-	left: 855px;
-	float: left;
-	top: 40px;
+
 }
 #my_profile {
-	width: 150px;
-	height: 150px;
+	width: 80%;
+	height: 20%;
+	min-height: 150px;
 	position: relative;
-	top: 90px;
-	left: 9px;
+	margin:0 auto;
+	top: 20%;
+	left: 9%;
+	background-color: #E8E8E8;
 }
 #Rightline #mine {
 	color: #9F9E9E;
@@ -165,29 +172,33 @@
 	font-weight: 400;
 	font-size: 22pt;
 	position: relative;
-	left: 13px;
-	top: 119px;
+	top: 22%;
+	left: 12%;
 }
 #my_profile #arr_header {
 	background-color: #E84BA2;
 }
 #Content {
-	width: 685px;
-	height: 500px;
-	float: left;
-	display: block;
+	margin:0 auto;
+	width: 70%;
+	height: 80%;
+
 }
 #Content h1 {
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: xx-large;
-	margin-left: 50px;
-	margin-top: 19px;
+	font-size: 40pt;
+	position:absolute;
+	left:23%;
 	-webkit-box-shadow: inset 0px 0px;
 	box-shadow: inset 0px 0px;
 	color: #8F8E8E;
+	width: 29px;
 }
+
+/*以上这部分为模版固定的CSS，不同页面均适用，已调整为自适应浏览器尺寸*/
+/*-------------------------------------------------------------------*/
 #Content h2 {
 	position: static;
 }
@@ -202,18 +213,18 @@
 	font-weight: bold;
 }
 #line {
-	position: relative;
+	position: absolute;
 	margin-left: auto;
 	margin-right: auto;
-	top: 77px;
+	top: 40%;
 	width: 550px;
-	left: -5px;
 	border-spacing: 1px 1px;
 	border-radius: 3px;
 	-webkit-box-shadow: 0px 0px 3px 4px #F65757;
 	box-shadow: 0px 0px 3px 4px #F65757;
 	border: 2px solid #F9F8F8;
 	opacity: 1;
+	left: 32.2%;
 }
 #line:hover {
 	-webkit-box-shadow: 0px 0px 3px 4px #F55A5A;
@@ -229,14 +240,13 @@
 	height: 18px;
 	margin-left: 57px;
 	position: relative;
-	top: 97px;
-	left: 37px;
 	z-index: 1;
 	-webkit-box-shadow: 0px 0px 6px 2px #F8C3C3;
 	box-shadow: 0px 0px 6px 2px #F8C3C3;
 	margin-right: auto;
 	display: inline;
 	opacity: 1;
+	cursor:pointer;
 }
 .datebutton:hover {
 	-webkit-box-shadow: 0px 0px 7px 3px #F97171;
@@ -248,22 +258,28 @@
 	background-color: #F65F5F;
 	border: thin solid #F85E60;
 }
+#datebuttons {
+	position: absolute;
+	top: 40%;
+	left: 30.6%;
+}
 #arr_info {
-	width: 417px;
-	height: 200px;
+	width: 520px;
+	height: 211px;
 	border-spacing: 1px 1px;
 	margin-left: auto;
 	margin-right: auto;
-	top: 163px;
-	position: relative;
+	top: 57%;
+	position: absolute;
 	background-color: #F5F4F4;
 	-webkit-box-shadow: 0px 0px 10px 0px #E4E3E3;
 	box-shadow: 0px 0px 10px 0px #E4E3E3;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 15px;
 	border-top-right-radius: 5px;
-	left: -33px;
+	left: 33%;
 	border: thin solid #ECECEC;
+	z-index: 1;
 }
 #arr_info #line2 {
 	margin-left: 20px;
@@ -298,6 +314,7 @@
 	border: thin solid #D0CECE;
 	padding-top: 3px;
 	padding-bottom: 1px;
+	cursor:pointer;
 	}
 #negotiate{
 	background-color: #F65657;
@@ -305,9 +322,9 @@
 	height: 20px;
 	padding-bottom: 22px;
 	position: absolute;
-	left: 303px;
+	left: 74%;
 	z-index: 1;
-	top: 24px;
+	top: 11%;
 	margin-left: auto;
 	margin-right: auto;
 	}
@@ -316,6 +333,13 @@
 	width: 80px;
 	height: 20px;
 	}
+#dates {
+	position: absolute;
+	top: 33%;
+	left: 29%;
+	width: 50%;
+	height: 100%;
+}
 #dates p {
 	display: inline;
 	color: #8F8E8E;
@@ -323,14 +347,14 @@
 	font-style: normal;
 	font-weight: 400;
 	font-size: 8pt;
-	margin-left: 8px;
+	top: 2%;
+	margin-left: 3px;
 	position: relative;
-	left: 46px;
-	top: 79px;
+	left: 1%;
 }
 #dates .dateeven {
+	top: 12%;
 	position: relative;
-	top: 148px;
 }
 #sendmsg {
 	width: 336px;
@@ -338,18 +362,18 @@
 	border-spacing: 1px 1px;
 	margin-left: auto;
 	margin-right: auto;
-	top: 58px;
-	position: relative;
+	position: absolute;
 	background-color: #F5F4F4;
 	-webkit-box-shadow: 0px 0px 10px 0px #E4E3E3;
 	box-shadow: 0px 0px 10px 0px #E4E3E3;
 	border-bottom-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 15px;
-	left: 159px;
 	border: thin solid #ECECEC;
 	z-index: 1;
-	opacity: 1
+	opacity: 1;
+	top: 57.5%;
+	left: 53%;
 }
 #sendmsg #receiver {
 	margin-top: 9px;
@@ -410,6 +434,7 @@
 	top: 166px;
 	margin-left: auto;
 	margin-right: auto;
+	cursor:pointer;
 }
 
 #send:hover,#close:hover,#send:focus,#close:focus{
