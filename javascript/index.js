@@ -37,6 +37,9 @@ $( document ).ready(function() {
     month[11]="December.";
     var showmonth = month[date.getMonth()];
     $('#month').html(showmonth);
+    document.getElementById("user_info_head_img").src="/getimage";
+
+    
     
     //you need to declare currentevents as Global Variable so that you can change it in the function
     var currentevents;
@@ -48,6 +51,7 @@ $( document ).ready(function() {
                $("#current").html('Current invites: ' + currentevents);
                $("#user_info_name").html(obj.NickName + ' (' + obj.UserID + ')' );
                //*VERY IMPORTANT : alert(obj['activities'][1].ActTime);
+               
                display(obj);
            },"text");
     
@@ -55,6 +59,8 @@ $( document ).ready(function() {
     //        function(data){
     //        alert(data) ;
     //        },"text");
+    
+           
     function display(object){
         if (currentevents > 0 && object['activities'][0].ActFlag == 0) {
             $("#arr_info_1").fadeIn(1000);
