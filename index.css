@@ -205,11 +205,12 @@ html, body {height: 100%;
 	margin-right: auto;
 	position: absolute;
 	top: 50%;
-	left: 43%;
+	left: 42%;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #ABA9A9;
 	font-size: xx-large;
-	font-weight: 500;
+	font-weight: 400;
+	opacity:0.4;
 }
 
 #postbutton {

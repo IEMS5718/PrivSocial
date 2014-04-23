@@ -1,6 +1,20 @@
 $( document ).ready(function() {
 	$("#arr_info").hide();
 	$("#sendmsg").hide();
+	$('#date1').css('opacity',0);
+	$('#date2').css('opacity',0);
+	$('#date3').css('opacity',0);
+	$('#date4').css('opacity',0);
+	$('#date5').css('opacity',0);
+	$('#date6').css('opacity',0);
+	$('#date7').css('opacity',0);
+	$('#datebutton1').css('opacity',0);
+	$('#datebutton2').css('opacity',0);
+	$('#datebutton3').css('opacity',0);
+	$('#datebutton4').css('opacity',0);
+	$('#datebutton5').css('opacity',0);
+	$('#datebutton6').css('opacity',0);
+	$('#datebutton7').css('opacity',0);	
 	//先隐藏各部件
 	
 	var date = new Date();
@@ -46,142 +60,59 @@ $( document ).ready(function() {
 					strdate = spdate[0].split("-")[1];		//得到日期string
 					intdate = parseInt(strdate);
 					if(intdate == showdate){
-							$('#date1').fadeIn(1000);
-							$('#date2').css('opacity',0);
-							$('#date3').css('opacity',0);
-							$('#date4').css('opacity',0);
-							$('#date5').css('opacity',0);
-							$('#date6').css('opacity',0);
-							$('#date7').css('opacity',0);
-							$('#datebutton1').fadeIn(1000);
+							$('#date1').css('opacity',1);
+							$('#datebutton1').css('opacity',1);
 							$('#datebutton1').attr('id', intdate);
-							$('#datebutton2').css('opacity',0);
-							$('#datebutton3').css('opacity',0);
-							$('#datebutton4').css('opacity',0);
-							$('#datebutton5').css('opacity',0);
-							$('#datebutton6').css('opacity',0);
-							$('#datebutton7').css('opacity',0);
 							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][0%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
 							$('#invite_address').html(obj['activities'][0%obj['activities'].length].InviterEmail);
 							$('#invite_info').html(obj['activities'][0%obj['activities'].length].Actcontent);
 														
 						}
 					if(intdate == showdate+1){
-							$('#date1').css('opacity',0);
-							$('#date2').fadeIn(1000);
-							$('#date3').css('opacity',0);
-							$('#date4').css('opacity',0);
-							$('#date5').css('opacity',0);
-							$('#date6').css('opacity',0);
-							$('#date7').css('opacity',0);
-							$('#datebutton1').css('opacity',0);
-							$('#datebutton2').fadeIn(1000);
+							$('#date2').css('opacity',1);
+							$('#datebutton2').css('opacity',1);
 							$('#datebutton2').attr('id', intdate);
-							$('#datebutton3').css('opacity',0);
-							$('#datebutton4').css('opacity',0);
-							$('#datebutton5').css('opacity',0);
-							$('#datebutton6').css('opacity',0);
-							$('#datebutton7').css('opacity',0);
 							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][1%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
 							$('#invite_address').html(obj['activities'][1%obj['activities'].length].InviterEmail);
 							$('#invite_info').html(obj['activities'][1%obj['activities'].length].Actcontent);								
 						}					
 					if(intdate == showdate+2){
-							$('#date1').css('opacity',0);
-							$('#date2').css('opacity',0);
-							$('#date3').fadeIn(1000);
-							$('#date4').css('opacity',0);
-							$('#date5').css('opacity',0);
-							$('#date6').css('opacity',0);
-							$('#date7').css('opacity',0);
-							$('#datebutton1').css('opacity',0);
-							$('#datebutton2').css('opacity',0);
-							$('#datebutton3').fadeIn(1000);
+							$('#date3').css('opacity',1);
+							$('#datebutton3').css('opacity',1);
 							$('#datebutton3').attr('id', intdate);
-							$('#datebutton4').css('opacity',0);
-							$('#datebutton5').css('opacity',0);
-							$('#datebutton6').css('opacity',0);
-							$('#datebutton7').css('opacity',0);
 							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][2%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
 							$('#invite_address').html(obj['activities'][2%obj['activities'].length].InviterEmail);
 							$('#invite_info').html(obj['activities'][2%obj['activities'].length].Actcontent);	
 						}
 					if(intdate == showdate+3){
-							$('#date1').css('opacity',0);
-							$('#date2').css('opacity',0);
-							$('#date3').css('opacity',0);
-							$('#date4').fadeIn(1000);
-							$('#date5').css('opacity',0);
-							$('#date6').css('opacity',0);
-							$('#date7').css('opacity',0);
-							$('#datebutton1').css('opacity',0);
-							$('#datebutton2').css('opacity',0);
-							$('#datebutton3').css('opacity',0);
-							$('#datebutton4').fadeIn(1000);
+							$('#date4').css('opacity',1);
+							$('#datebutton4').css('opacity',1);
 							$('#datebutton4').attr('id', intdate);
-							$('#datebutton5').css('opacity',0);
-							$('#datebutton6').css('opacity',0);
-							$('#datebutton7').css('opacity',0);
 							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][3%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
 							$('#invite_address').html(obj['activities'][3%obj['activities'].length].InviterEmail);
 							$('#invite_info').html(obj['activities'][3%obj['activities'].length].Actcontent);	
 						}
 					if(intdate == showdate+4){
-							$('#date1').css('opacity',0);
-							$('#date2').css('opacity',0);
-							$('#date3').css('opacity',0);
-							$('#date4').css('opacity',0);
-							$('#date5').fadeIn(1000);
-							$('#date6').css('opacity',0);
-							$('#date7').css('opacity',0);
-							$('#datebutton1').css('opacity',0);
-							$('#datebutton2').css('opacity',0);
-							$('#datebutton3').css('opacity',0);
-							$('#datebutton4').css('opacity',0);
-							$('#datebutton5').fadeIn(1000);
+							$('#date5').css('opacity',1);
+							$('#datebutton5').css('opacity',1);
 							$('#datebutton5').attr('id', intdate);
-							$('#datebutton6').css('opacity',0);
-							$('#datebutton7').css('opacity',0);
 							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][4%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
 							$('#invite_address').html(obj['activities'][4%obj['activities'].length].InviterEmail);
 							$('#invite_info').html(obj['activities'][4%obj['activities'].length].Actcontent);								
 						}
 					if(intdate == showdate+5){
-							$('#date1').css('opacity',0);
-							$('#date2').css('opacity',0);
-							$('#date3').css('opacity',0);
-							$('#date4').css('opacity',0);
-							$('#date5').css('opacity',0);
-							$('#date6').fadeIn(1000);
-							$('#date7').css('opacity',0);
-							$('#datebutton1').css('opacity',0);
-							$('#datebutton2').css('opacity',0);
-							$('#datebutton3').css('opacity',0);
-							$('#datebutton4').css('opacity',0);
-							$('#datebutton5').css('opacity',0);
-							$('#datebutton6').fadeIn(1000);
+
+							$('#date6').css('opacity',1);
+							$('#datebutton6').css('opacity',1);
 							$('#datebutton6').attr('id', intdate);
-							$('#datebutton7').css('opacity',0);
 							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][5%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
 							$('#invite_address').html(obj['activities'][5%obj['activities'].length].InviterEmail);
 							$('#invite_info').html(obj['activities'][5%obj['activities'].length].Actcontent);								
 						}
 						
 					if(intdate == showdate+6){
-							$('#date1').css('opacity',0);
-							$('#date2').css('opacity',0);
-							$('#date3').css('opacity',0);
-							$('#date4').css('opacity',0);
-							$('#date5').css('opacity',0);
-							$('#date6').css('opacity',0);
-							$('#date7').fadeIn(1000);
-							$('#datebutton1').css('opacity',0);
-							$('#datebutton2').css('opacity',0);
-							$('#datebutton3').css('opacity',0);
-							$('#datebutton4').css('opacity',0);
-							$('#datebutton5').css('opacity',0);
-							$('#datebutton6').css('opacity',0);
-							$('#datebutton7').fadeIn(1000);
+							$('#date7').css('opacity',1);
+							$('#datebutton7').css('opacity',1);
 							$('#datebutton7').attr('id', intdate);
 							$('#invite_name_time').html("Inviter ID: "+ obj['activities'][6%obj['activities'].length].InviterID + obj['activities'][0].ActTime);
 							$('#invite_address').html(obj['activities'][6%obj['activities'].length].InviterEmail);
