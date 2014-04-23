@@ -43,6 +43,8 @@ $( document ).ready(function() {
     //you need to declare currentevents as Global Variable so that you can change it in the function
     var currentevents;
     //get the data structure from server
+    
+
     $.post('/userapi',{},
            function(data){
                var obj = jQuery.parseJSON(data);

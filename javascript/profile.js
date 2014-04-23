@@ -59,7 +59,9 @@ $( document ).ready(function() {
 	  alert('Please at least type something');
 	}
 	else {
-	  $("#user_profile_form").submit();                    //服务器地址在id=user_profile_form的action=“”里面加
+	  $("#user_profile_form").submit();     
+	  alert('success');       
+	  //服务器地址在id=user_profile_form的action=“”里面加
 	}  
   });
 
