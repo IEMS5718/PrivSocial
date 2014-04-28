@@ -57,7 +57,7 @@ $( document ).ready(function() {
                $("#mine_name").html(obj.NickName);
 			    $("#arr_content").html('Email: ' + obj.Email);
                $("#arr_tel").html('Tel: ' + obj.Tel);
-               //*VERY IMPORTANT : alert(obj['activities'][1].ActTime);               
+               //*VERY IMPORTANT : alert(obj['activities'][1].ActTime);             
                display(obj);
            },"text");
     
@@ -67,226 +67,55 @@ $( document ).ready(function() {
     //        },"text");
     
            
-    function display(object){
-			if(currentevents == 0){
+function display(object){
+		if(currentevents == 0){
 			$('#nothing_hint').fadeIn(800);
 			}
-		$('input').click(function(){
-			if(currentevents == 0){
-				$('#nothing_hint').fadeIn(800);
-				}						
-			});
-	
-        if (currentevents > 0 && object['activities'][0].ActFlag == 0) {
-            $("#arr_info_1").fadeIn(1000);
-            currentevents--;
-            $('#arr_invitor1').html('Invitor ID: ' + object['activities'][0].InviterID);
-            $('#arr_time1').html(object['activities'][0].ActTime);
-            $('#arr_content1').html(object['activities'][0].ActContent);
-            $("#accept1").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][0].ActivityID,'Actflag':1},
-                       function(data){                           
-                           $("#arr_info_1").fadeOut(800);
-						  			if(currentevents == 0){
-				$('#nothing_hint').fadeIn(800);
-				}	 
-                       },"text");
-            });
-            
-            $("#reject1").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][0].ActivityID,'Actflag':-1},
-                       function(data){
-                           
-                           $("#arr_info_1").fadeOut(800);
-						   location.reload(true);	
 
+//-------------------------------------------------------------------------------- 
+//循环显示6个invite内容框
+	for(var i=0;i<6;i++){ 
+        if (currentevents > 0 && object['activities'][i].ActFlag == 0) {
+			var arrinfostr= "#arr_info_" + (i+1);			
+			var arrinvitorstr= "#arr_invitor" + (i+1); 
+			var arrtimestr= "#arr_time" + (i+1);
+			var arrcontentstr= "#arr_content" + (i+1);
+			var acceptstr= "#accept" + (i+1);
+			var rejectstr= "#reject" + (i+1);
+			var ignorestr= "#ignore" + (i+1);
+            $(arrinfostr).fadeIn(1000);
+            //currentevents--;
+			 //document.getElementById("arr_invotor1").textcontent("Invitor ID:" + object['activities'][i].InviterID);
+            $(arrinvitorstr).html("Invitor ID: " + object['activities'][i].InviterID);
+            $(arrtimestr).html(object['activities'][i].ActTime);			 
+            $(arrcontentstr).html(object['activities'][i].ActContent);
+			
+            $(acceptstr).click(function(){
+				currentevents--;
+              $.post('/changeact',{'ActivityID':object['activities'][i].ActivityID,'Actflag':1},
+                     function(data){                          
+                         $(arrinfostr).fadeOut(800); 
+					  },"text");
+            });
+            
+            $(rejectstr).click(function(){
+				currentevent--;
+                $.post('/changeact',{'ActivityID':object['activities'][i].ActivityID,'Actflag':-1},
+                       function(data){
+						   $(arrinfostr).fadeOut(800);				   
                        },"text");
             });
             
-            $("#ignore1").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][0].ActivityID,'Actflag':-2},
-                       function(data){
-                           
-                           $("#arr_info_1").fadeOut(800);
-								location.reload(true);	
+            $(ignorestr).click(function(){
+				currentevent--;
+                $.post('/changeact',{'ActivityID':object['activities'][i].ActivityID,'Actflag':-2},
+                       function(data){                           
+                           $(arrinfostr).fadeOut(800);
                        },"text");
             });
-        }
-        
-            if (currentevents > 0 && object['activities'][1].ActFlag == 0 ) {
-                $("#arr_info_2").fadeIn(1000);
-                currentevents = currentevents - 1;
-                $('#arr_invitor2').html('Invitor ID: ' + object['activities'][1].InviterID);
-                $('#arr_time2').html(object['activities'][1].ActTime);
-				  document.getElementById('arr_content2').innerHTML(object['activities'][1].ActContent);
-                
-             $("#accept2").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][1].ActivityID,'Actflag':1},
-                       function(data){
-                           
-                           $("#arr_info_2").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-            
-            $("#reject2").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][1].ActivityID,'Actflag':-1},
-                       function(data){
-                           
-                           $("#arr_info_2").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-            
-            $("#ignore2").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][1].ActivityID,'Actflag':-2},
-                       function(data){
-                           
-                           $("#arr_info_2").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-            }
-        
-                if (currentevents > 0 && object['activities'][2].ActFlag == 0) {
-                    $("#arr_info_3").fadeIn(1000);
-                    $('#arr_invitor3').html('Invitor ID: ' + object['activities'][2].InviterID);
-                    $('#arr_time3').html(object['activities'][2].ActTime);
-                    $('#arr_content3').html(object['activities'][2].ActContent);
-                    currentevents = currentevents - 1;
-            $("#accept3").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][2].ActivityID,'Actflag':1},
-                       function(data){
-                           
-                           $("#arr_info_3").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-            
-            $("#reject3").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][2].ActivityID,'Actflag':-1},
-                       function(data){
-                           
-                           $("#arr_info_3").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-            
-            $("#ignore3").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][2].ActivityID,'Actflag':-2},
-                       function(data){
-                           
-                           $("#arr_info_3").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-                }
-                
-                    if (currentevents > 0 && object['activities'][3].ActFlag == 0) {
-                        $("#arr_info_4").fadeIn(1000);
-                        $('#arr_invitor4').html('Invitor ID: ' + object['activities'][3].InviterID);
-                        $('#arr_time4').html(object['activities'][3].ActTime);
-                        $('#arr_content4').html(object['activities'][3].ActContent);
-                        currentevents = currentevents - 1;
-            $("#accept4").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][3].ActivityID,'Actflag':1},
-                       function(data){
-                           
-                           $("#arr_info_4").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-            
-            $("#reject4").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][3].ActivityID,'Actflag':-1},
-                       function(data){
-                           
-                           $("#arr_info_4").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-            
-            $("#ignore4").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][3].ActivityID,'Actflag':-2},
-                       function(data){
-                           
-                           $("#arr_info_4").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-                    }
-        
-                        if (currentevents > 0 && object['activities'][4].ActFlag == 0) {
-                            $("#arr_info_5").fadeIn(1000);
-                            $('#arr_invitor5').html('Invitor ID: ' + object['activities'][4].InviterID);
-                            $('#arr_time5').html(object['activities'][4].ActTime);
-                            $('#arr_content5').html(object['activities'][4].ActContent);
-                            currentevents = currentevents - 1;
-            $("#accept5").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][4].ActivityID,'Actflag':1},
-                       function(data){
-                           
-                           $("#arr_info_5").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-            
-            $("#reject5").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][4].ActivityID,'Actflag':-1},
-                       function(data){
-                           
-                           $("#arr_info_5").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-            
-            $("#ignore5").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][4].ActivityID,'Actflag':-2},
-                       function(data){
-                           
-                           $("#arr_info_5").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-                            
-                        }
-                        
-                        if (currentevents > 0 && object['activities'][5].ActFlag == 0) {
-                            $("#arr_info_6").fadeIn(1000);
-                            $('#arr_invitor6').html('Invitor ID: ' + object['activities'][5].InviterID);
-                            $('#arr_time6').html(object['activities'][5].ActTime);
-                            $('#arr_content6').html(object['activities'][5].ActContent);
-                            currentevents = currentevents - 1; 
-            $("#accept6").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][5].ActivityID,'Actflag':1},
-                       function(data){
-                           
-                           $("#arr_info_6").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-            
-            $("#reject6").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][5].ActivityID,'Actflag':-1},
-                       function(data){
-                           
-                           $("#arr_info_6").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-            
-            $("#ignore6").click(function(){
-                $.post('/changeact',{'ActivityID':object['activities'][5].ActivityID,'Actflag':-2},
-                       function(data){
-                           
-                           $("#arr_info_6").fadeOut(800);
-						   			location.reload(true);	
-                       },"text");
-            });
-                            
-                        }		   
-                    
-    }
+        } 
+	}
+ }
     
     //function of postbutton
     $("#postbutton").click(function(){
@@ -307,7 +136,7 @@ $( document ).ready(function() {
 
 	$('#user_info_name').click(function(){
 		window.location.href="/";
-		});
+	});
     
     $("#close").click(function(){
         $("#postform").hide();

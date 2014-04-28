@@ -1,8 +1,9 @@
 $( document ).ready(function() {
+
 	$("#arr_info").hide();
 	$("#sendmsg").hide();
 	$('#date1').css('opacity',0);
-	$('#date2').css('opacity',0);
+	$('#date2').css('opacity',0);	
 	$('#date3').css('opacity',0);
 	$('#date4').css('opacity',0);
 	$('#date5').css('opacity',0);
@@ -15,7 +16,7 @@ $( document ).ready(function() {
 	$('#datebutton5').css('opacity',0);
 	$('#datebutton6').css('opacity',0);
 	$('#datebutton7').css('opacity',0);	
-	//先隐藏各部件
+
 	
 	var date = new Date();
     var showdate = date.getDate();
@@ -34,16 +35,36 @@ $( document ).ready(function() {
     month[9]="October.";
     month[10]="November.";
     month[11]="December.";
-    var showmonth = month[date.getMonth()];
+	var monthnum=date.getMonth();
+    var showmonth = month[monthnum];
     $('#month').html(showmonth);
+	var showdate_plus=new Array();
+	showdate_plus[0]=showdate;
+	showdate_plus[1]=showdate+1;
+	showdate_plus[2]=showdate+2;
+	showdate_plus[3]=showdate+3;
+	showdate_plus[4]=showdate+4;
+	showdate_plus[5]=showdate+5;
+	showdate_plus[6]=showdate+6;
+	//上半年偶数月和下半年奇数月均为30天，注意这里monthnum为数组序号
+	for(i=0;i<7;i++){
+		if(showdate_plus[i]>30){
+			if((monthnum < 7 && monthnum % 2 != 0) || (monthnum>=7 && monthnum % 2 ==0) ){		
+				showmonth=month[monthnum+1];
+				showdate_plus[i] = showdate_plus[i] % 30;
+			}
+		//其他为31天的月份
+			else{
+				showmonth=month[monthnum+1];
+				showdate_plus[i] = showdate_plus[i] % 31;
+				}
+		}
+		//显示时间
+		var datestring = "#date" + (i+1);
+		$(datestring).html(showdate_plus[i]+ ',' + showmonth + ' ' + showyear);
+	}
+	//设置头像
 	document.getElementById("user_info_head_img").src="/getimage";
-	$('#date1').html(showdate + ', ' + showmonth + ' ' + showyear);
-	$('#date2').html(showdate+1 + ', ' + showmonth + ' ' + showyear);
-	$('#date3').html(showdate+2 + ', ' + showmonth + ' ' + showyear);
-	$('#date4').html(showdate+3 + ', ' + showmonth + ' ' + showyear);
-	$('#date5').html(showdate+4 + ', ' + showmonth + ' ' + showyear);
-	$('#date6').html(showdate+5 + ', ' + showmonth + ' ' + showyear);
-	$('#date7').html(showdate+6 + ', ' + showmonth + ' ' + showyear);
 	
    	$.post('/userapi',{},
           function(data){

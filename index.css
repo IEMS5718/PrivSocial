@@ -1,14 +1,18 @@
 @charset "UTF-8";
 
 /*以下这部分为模版固定的CSS，不同页面均适用，已调整为自适应浏览器尺寸*/
-html, body {height: 100%;
+html, body {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	height: 100%;
+	width: 1200px;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	display: block;
 }
 
 #Wrapper {
 	position: relative;
-	margin-left: auto;
-	margin-right: auto;
 	opacity:1;
 	height:100%;
 }
@@ -58,11 +62,12 @@ html, body {height: 100%;
 	background-color: #191718;
 	color: #FBF9F9;
 	width: 225px;
-	height:90%;
-	position: relative;
+	height: 720px;
 	float: left;
 	font-size: 9pt;
-	top: -11px;
+	position: absolute;
+	top: 40px;
+	list-style-image: url(Images/ico_profile.png);
 }
 #Leftline_top {
 	width: 100%;
@@ -132,9 +137,7 @@ html, body {height: 100%;
 	left: -16%;
 }
 #profile {
-	list-style-image: url(Images/ico_profile.png);
 	list-style-position: outside;
-
 }
 #activity {
 	list-style-image: url(Images/ico_act.png);
@@ -146,27 +149,26 @@ html, body {height: 100%;
 }
 #Rightline {
 	width: 225px;
-	height:90%;
-	position: relative;
-	top:-1.31%;
-	left:0.5%;
-	float:right;
+	height: 720px;
+	position: absolute;
+	top: 40px;
+	left: 1010px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	background-color: #F5F4F4;
-
 }
 #my_profile {
-	width: 80%;
-	height: 20%;
 	min-height: 150px;
-	position: relative;
-	margin: 0 auto;
-	top: 20%;
-	left: 9%;
+	position: absolute;
 	background-color: #E8E8E8;
 	font-size: 9pt;
+	top: 218px;
+	margin-right: auto;
+	margin-left: auto;
+	height: 180px;
+	width: 205px;
+	left: 9px;
 }
 #Rightline #mine {
 	color: #9F9E9E;
@@ -174,30 +176,32 @@ html, body {height: 100%;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 22pt;
-	position: relative;
-	top: 22%;
-	left: 12%;
+	position: absolute;
+	top: 160px;
+	left: 13px;
 }
 #my_profile #arr_header {
 	background-color: #E84BA2;
 }
 #Content {
-	margin: 0 auto;
-	width: 70%;
-	height: 80%;
-	top: 0px;
+	position: relative;
+	left: 227px;
+	width: 780px;
+	height: 90%;
+	top: -10px;
 }
 #Content h1 {
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 40pt;
-	position:absolute;
-	left:23%;
+	font-size: 36pt;
+	position: absolute;
 	-webkit-box-shadow: inset 0px 0px;
 	box-shadow: inset 0px 0px;
 	color: #8F8E8E;
 	width: 29px;
+	left: 96px;
+	top: 7px;
 }
 
 /*以上这部分为模版固定的CSS，不同页面均适用，已调整为自适应浏览器尺寸*/
@@ -206,13 +210,13 @@ html, body {height: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	position: absolute;
-	top: 50%;
-	left: 42%;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #ABA9A9;
 	font-size: xx-large;
 	font-weight: 400;
-	opacity:0.4;
+	opacity: 0.4;
+	top: 300px;
+	left: 260px;
 }
 
 #postbutton {
@@ -229,23 +233,23 @@ html, body {height: 100%;
 	background-color: #F65857;
 	background-origin: border-box;
 	border-radius: 5px;
-	left: 72.5%;
-	top: 14%;
 	z-index: 1;
+	left: 582px;
+	top: 53px;
 }
 #postbutton:hover {
 	background-color: #F41414;
+	border-spacing: 1px 1px;
+	border: thin solid #E7E5E5;	
 }
 .arr_info {
-	width: 25%;
-	min-width: 180px;
-	height: 30%;
-	min-height: 230px;
+	width: 230px;
+	height: 230px;
 	border-spacing: 1px 1px;
 	border: thin solid #E0E0E0;
 	position: relative;
-	left: 9%;
-	top: 20%;
+	left: 11px;
+	top: 150px;
 	float: left;
 	opacity: 1;
 	max-height: 250px;
@@ -256,30 +260,32 @@ html, body {height: 100%;
 }
 #arr_header {
 	height: 3px;
-	background-color: #73C0CA;
+	background-color: #0599B0;
 }
 #arr_info_2 #arr_header {
-	background-color: #F36443;
+	background-color: #A4BD0A;
 }
 #arr_info_3 #arr_header {
-	background-color: #CBF14E;
+	background-color: #FFA615;
 }
 #arr_info_4 #arr_header {
-	background-color: #CBCBCB;
+	background-color: #FF2E00;
 }
 #arr_info_5 #arr_header {
-	background-color: #E84BA2;
+	background-color: #F5D606;
+}
+#arr_info_6 #arr_header {
+	background-color: #30B1F9;
 }
 .arr_info p {
 	position: relative;
-	margin-left: 10%;
-	margin-right: 10%;
-	top: 5%;
+	margin-left: 9%;
+	top: 8px;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 10pt;
-	line-height: 8px;
+	line-height: 18px;
 }
 .arr_info:hover {
 	background-color: #E8E8E8;
@@ -288,13 +294,13 @@ html, body {height: 100%;
 	margin-left: 5px;
 	margin-right: 5px;
 	position:relative;
-	top:5%;
+	top:3.5%;
 	opacity: 0.25;
 }
 .arr_info input {
 	position: relative;
-	top: 69px;
-	left: 50px;
+	top: 53px;
+	left: 45px;
 	margin-left: 15px;
 }
 
@@ -445,4 +451,24 @@ html, body {height: 100%;
 	height: 30px;
 	border-radius: 3px;	
 	cursor:pointer;	
+	}
+.acceptbutton:hover {
+	-webkit-box-shadow: 0px 0px 3px 2px #ADADAD;
+	box-shadow: 0px 0px 3px 2px #ADADAD;
+	border-spacing: 1px 1px;
+	border: thin solid #E7E5E5;
+}
+
+.rejectbutton:hover {
+	-webkit-box-shadow: 0px 0px 3px 2px #ADADAD;
+	box-shadow: 0px 0px 3px 2px #ADADAD;
+	border-spacing: 1px 1px;
+	border: thin solid #E7E5E5;
+	}
+.ignorebutton:hover {
+	-webkit-box-shadow: 0px 0px 3px 2px #ADADAD;
+	box-shadow: 0px 0px 3px 2px #ADADAD;
+	border-spacing: 1px 1px;
+	border: thin solid #E7E5E5;	
+	
 	}

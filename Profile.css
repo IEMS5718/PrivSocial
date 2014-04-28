@@ -1,13 +1,18 @@
 @charset "UTF-8";
+
 /*以下这部分为模版固定的CSS，不同页面均适用，已调整为自适应浏览器尺寸*/
-html, body {height: 100%;
+html, body {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	height: 100%;
+	width: 1200px;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	display: block;
 }
 
 #Wrapper {
 	position: relative;
-	margin-left: auto;
-	margin-right: auto;
 	opacity:1;
 	height:100%;
 }
@@ -47,7 +52,7 @@ html, body {height: 100%;
 }
 #user_info {
 	width: 100px;
-	left: 92%;
+	left: 90%;
 	position: absolute;
 	top: 7px;
 	border-radius: 0px;
@@ -57,11 +62,11 @@ html, body {height: 100%;
 	background-color: #191718;
 	color: #FBF9F9;
 	width: 225px;
-	height:90%;
-	position: relative;
+	height: 720px;
 	float: left;
 	font-size: 9pt;
-	top: -11px;
+	position: absolute;
+	top: 40px;
 }
 #Leftline_top {
 	width: 100%;
@@ -145,26 +150,26 @@ html, body {height: 100%;
 }
 #Rightline {
 	width: 225px;
-	height:90%;
-	position: relative;
-	top:-1.31%;
-	left:0.5%;
-	float:right;
+	height: 720px;
+	position: absolute;
+	top: 40px;
+	left: 1010px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	background-color: #F5F4F4;
-
 }
 #my_profile {
-	width: 80%;
-	height: 20%;
 	min-height: 150px;
-	position: relative;
-	margin:0 auto;
-	top: 20%;
-	left: 9%;
+	position: absolute;
 	background-color: #E8E8E8;
+	font-size: 9pt;
+	top: 218px;
+	margin-right: auto;
+	margin-left: auto;
+	height: 180px;
+	width: 205px;
+	left: 9px;
 }
 #Rightline #mine {
 	color: #9F9E9E;
@@ -172,30 +177,32 @@ html, body {height: 100%;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 22pt;
-	position: relative;
-	top: 22%;
-	left: 12%;
+	position: absolute;
+	top: 160px;
+	left: 13px;
 }
 #my_profile #arr_header {
 	background-color: #E84BA2;
 }
 #Content {
-	margin:0 auto;
-	width: 70%;
-	height: 80%;
-
+	position: relative;
+	left: 227px;
+	width: 780px;
+	height: 90%;
+	top: -10px;
 }
 #Content h1 {
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 40pt;
-	position:absolute;
-	left:23%;
+	font-size: 36pt;
+	position: absolute;
 	-webkit-box-shadow: inset 0px 0px;
 	box-shadow: inset 0px 0px;
 	color: #8F8E8E;
 	width: 29px;
+	left: 96px;
+	top: 7px;
 }
 
 /*以上这部分为模版固定的CSS，不同页面均适用，已调整为自适应浏览器尺寸*/
@@ -205,15 +212,15 @@ html, body {height: 100%;
 }
 #Content #user_profile {
 	width: 600px;
-	position: relative;
+	position: absolute;
 	color: #4B4B4B;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: small;
 	font-weight: bold;
 	margin-left: auto;
 	margin-right: auto;
-	top: -15px;
-	left: -74px;
+	top: 139px;
+	left: 89px;
 	padding-left: 6px;
 }
 #user_profile_form #nickname {
@@ -278,13 +285,14 @@ html, body {height: 100%;
 	opacity: 0;
 	position: relative;
 	z-index: 1;
-	top: 4px;
 	left: 3px;
+	top: 4px;
+	width: 20px;
 }
 
 #buttoncover {
 	position: absolute;
-	top: 11px;
+	top: 28px;
 	background-color: #F65657;
 	width: 80px;
 	height: 20px;
@@ -352,7 +360,7 @@ html, body {height: 100%;
 	height: 20px;
 	padding-bottom: 22px;
 	position: relative;
-	top: 480px;
+	top: 522px;
 	z-index: 1;
 	left: -244px;
 }
@@ -368,7 +376,7 @@ html, body {height: 100%;
 	margin-left: 27px;
 	padding-bottom: 22px;
 	z-index: 1;
-	top: 480px;
+	top: 522px;
 	left: -160px;
 }
 
@@ -381,10 +389,10 @@ html, body {height: 100%;
 	border-spacing: 2px 2px;
 	border: 3px dotted #C3C3C3;
 	border-radius: 60px;
-	position: relative;
-	top: 101px;
-	left: 78%;
+	position: absolute;
+	top: 108px;
 	z-index: 1;
+	left: 545px;
 }
 #saveimage #upload {
 	background-color: #F65657;
@@ -392,8 +400,8 @@ html, body {height: 100%;
 	height: 20px;
 	padding-bottom: 23px;
 	position: absolute;
-	top: 118px;
-	left: 683px;
+	top: 39px;
+	left: 132px;
 	z-index: 2;
 }
 #saveimge #upload:hover{
