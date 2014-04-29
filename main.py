@@ -58,7 +58,7 @@ def register(self):
             data['flag']='0'
             data['message']='Register Fail! The Email has already registered.'
             jsonobj=json.dumps(data)
-            self.response.write(jsonobj)
+            self.response.write('Register Fail! The Email has already registered<br><br> Redirecting... <meta http-equiv="refresh" content=2;url="/">')
         else:
             first, last = Profile.allocate_ids(1)
             profile = Profile(key=ndb.Key(Profile, email), UserID=first, NickName=nickname, Password=firstpassword, Tel=tel, Invitable=1, Email=email)
@@ -73,7 +73,7 @@ def register(self):
         data['flag']='0'
         data['message']='Register Fail! The password isnot same.'
         jsonobj=json.dumps(data)
-        self.response.write(jsonobj)    
+        self.response.write('Register Fail! The password isnot same<br><br> Redirecting... <meta http-equiv="refresh" content=2;url="/">')    
         
 def login(self):
     email = self.request.get('email')
@@ -94,13 +94,13 @@ def login(self):
             data['flag']='0'
             data['message']='Password input error'
             jsonobj=json.dumps(data)
-            self.response.write(jsonobj)
+            self.response.write('Password input error<br><br> Redirecting... <meta http-equiv="refresh" content=2;url="/">')
     else:
         data={}
         data['flag']='0'
         data['message']='username doesnot exist'
         jsonobj=json.dumps(data)
-        self.response.write(jsonobj)
+        self.response.write('username doesnot exist<br><br> Redirecting... <meta http-equiv="refresh" content=2;url="/">')
         
 def getUserInfo(self):
     session = get_current_session()

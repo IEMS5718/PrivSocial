@@ -58,15 +58,148 @@ html, body {
 	border-radius: 0px;
 	height: 30px;
 }
+#mailrcv {
+	position: absolute;
+	left: 915px;
+	z-index: 1;
+	background-color: #393A3C;
+	width: 304px;
+	padding-left: 14px;
+	border-spacing: 1px 1px;
+	border: thin solid #393A3C;
+	border-radius: 3px;
+	height: 170px;
+}
+#mailrcv #rcv_close {
+	color: #FCFBFB;
+	font-weight: 300;
+	font-size: 9pt;
+	position: relative;
+	top: 136px;
+	left: 267px;
+	text-decoration: underline;
+}
+#mailrcv #rcv_maillist {
+	position: relative;
+	z-index: 1;
+	border-spacing: 1px 1px;
+	border: thin solid #F8F7F7;
+	border-radius: 3px;
+	top: 14px;
+	left: -3px;
+	height: 22px;
+}
+#mailrcv #rcv_mailcontent {
+	width: 192px;
+	height: 84px;
+	position: relative;
+	padding-left: 3px;
+	border-spacing: 1px 1px;
+	border: thin solid #F8F7F7;
+	border-radius: 3px;
+	resize: none;
+	top: 20px;
+	left: 94px;
+}
+#mailrcv #rcv_sender {
+	position: relative;
+	width: 193px;
+	height: 18px;
+	padding-left: 3px;
+	border-spacing: 1px 1px;
+	border: thin solid #F8F7F7;
+	border-radius: 3px;
+	top: 13px;
+}
+#mailrcv #rcv_reply {
+	position: relative;
+	top: 46px;
+	left: -94px;
+	height: 25px;
+	cursor: pointer;
+}
+#mailrcv #rcv_cancel {
+	top: 21px;
+	left: 198px;
+	position: relative;
+	height: 25px;
+	cursor: pointer;
+	z-index: 1;
+}
+#mailrcv #rcv_reply:hover {
+	background-color: #F41414;
+
+}
+#mailrcv #rcv_cancel:hover {
+	background-color: #F41414;
+}
+
+
+#mailsd_form {
+	position: absolute;
+	left: 915px;
+	z-index: 1;
+	background-color: #393A3C;
+	width: 304px;
+	padding-left: 14px;
+	border-spacing: 1px 1px;
+	border: thin solid #393A3C;
+	border-radius: 3px;
+	height: 170px;
+}
+#mailsd_form #sd_receiver {
+	position: relative;
+	width: 193px;
+	height: 18px;
+	padding-left: 3px;
+	border-spacing: 1px 1px;
+	border: thin solid #F8F7F7;
+	border-radius: 3px;
+	top: 12px;
+}
+#mailsd_form #sd_mailcontent {
+	width: 283px;
+	position: relative;
+	padding-left: 3px;
+	border-spacing: 1px 1px;
+	border: thin solid #F8F7F7;
+	border-radius: 3px;
+	resize: none;
+	top: 18px;
+	height: 77px;
+}
+#mailsd_form #sd_submit {
+	position: relative;
+	top: 30px;
+	left: 50px;
+	height: 25px;
+	cursor:pointer;
+}
+#mailsd_form #sd_cancel {
+	top: 30px;
+	left: 77px;
+	position: relative;
+	height: 25px;
+	cursor:pointer;
+}
+#mailsd_form #sd_submit:hover {
+	background-color: #F41414;
+}
+#mailsd_form #sd_cancel:hover {
+	background-color: #F41414;
+}
+
 #Leftline {
 	background-color: #191718;
 	color: #FBF9F9;
 	width: 225px;
-	height: 720px;
+	height: 90%;
+	max-height:1080px;
 	float: left;
 	font-size: 9pt;
 	position: absolute;
 	top: 40px;
+	list-style-image: url(Images/ico_profile.png);
 }
 #Leftline_top {
 	width: 100%;
@@ -136,9 +269,7 @@ html, body {
 	left: -16%;
 }
 #profile {
-	list-style-image: url(Images/ico_profile.png);
 	list-style-position: outside;
-
 }
 #activity {
 	list-style-image: url(Images/ico_act.png);
@@ -150,7 +281,8 @@ html, body {
 }
 #Rightline {
 	width: 225px;
-	height: 720px;
+	height: 90%;
+	max-height:1080px;
 	position: absolute;
 	top: 40px;
 	left: 1010px;

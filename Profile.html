@@ -21,6 +21,31 @@
     <p id="user_info_name">username</p>
     </div>
   </header>
+  
+  <!--新加的mail内容，一个div为显示mail列表，一个form为回复信息-->
+<div id="mailrcv">
+  <!--这个是关闭窗口按钮，需要一个js，可以参考本页最下面的post和close按钮所对应的js-->
+
+  <select id="rcv_maillist" name="rcv_maillist" onchange=""><!--这里onchange里面的值应该是新写的js函数，是用户选择列表中一个mail名字之后，会在右侧textarea中显示该消息的详细内容-->
+  <!--下面的option需要从服务器获取到邮件信息后，动态用getElementByid().innerHTML来显示整个邮件列表，可能会用到for循环-->
+  <option value="rcv_mail_1">Select one</option>   
+  </select>
+  <input type="text" id="rcv_sender" name="rcv_sender" placeholder="Sender">  
+  <textarea id="rcv_mailcontent" name="rcv_mailcontent"></textarea>
+<input type="submit" class="button" id="rcv_reply" value="Reply">
+  <input type="button" class="button" id="rcv_cancel" value="Cancel">   
+</div>
+
+<!--注意，这个框和上面那个框是重合的，并且是同样大小。体现的效果是上面的框点击后，会直接在那个框里进行内容变化-->
+
+<form id="mailsd_form" method="post" action="">
+<input type="text" id="sd_receiver" name="sd_receiver" placeholder="Receiver">
+  <textarea id="sd_mailcontent" name="sd_mailcontent" placeholder="Content"></textarea>
+<input type="submit" class="button" id="sd_submit" value="Send">
+  <input type="button" class="button" id="sd_cancel" value="Cancel">
+</form>
+  <!--新加的mail内容-->  
+  
   <div id="Leftline">
     <aside id="Leftline_top">
     <p id="month"></p>
