@@ -9,6 +9,11 @@ handlers:
 - url: /
   static_files: login.html
   upload: login.html
+
+#  a static file mapping
+- url: /Error.html
+  static_files: Error.html
+  upload: Error.html
   
 #  a static file mapping
 - url: /index.html
@@ -33,6 +38,11 @@ handlers:
 - url: /login.css
   static_files: login.css
   upload: login.css
+
+ #css style file  
+- url: /login.css
+  static_files: login.css
+  upload: login.css
   
  #js style file  
 - url: /javascript
@@ -43,9 +53,9 @@ handlers:
   static_dir: jQueryAssets
   
  #css style file  
-- url: /index.css
-  static_files: index.css
-  upload: index.css
+- url: /Error.css
+  static_files: Error.css
+  upload: Error.css
   
  #css style file  
 - url: /Profile.css

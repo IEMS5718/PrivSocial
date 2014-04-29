@@ -1,0 +1,50 @@
+@charset "UTF-8";
+body {
+	background-image: url(Images/login_background.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #FBF8F8;
+}
+#Topline h2 {
+	color: #FCFBFB;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: small;
+	padding-bottom: 12px;
+	padding-left: 30px;
+	list-style-type: none;
+	letter-spacing: 1px;
+}
+#center h1 {
+	position: absolute;
+	top: 204px;
+	left: 600px;
+	font-weight: 400;
+	font-size: 35pt;
+	text-decoration: line-through;
+}
+#center h2 {
+	position: absolute;
+	left: 749px;
+	top: 273px;
+	font-weight: 300;
+	font-size: 14pt;
+}
+#center h3 {
+	position: absolute;
+	top: 200px;
+	left: 604px;
+	font-weight: 300;
+	font-size: medium;
+}
+#center h3 a {
+	text-decoration: underline;
+	cursor: pointer;
+	font-size: 11pt;
+}
+#center h3 a:visited {
+	color: #FBF8F8;
+	font-size: 11pt;
+}
