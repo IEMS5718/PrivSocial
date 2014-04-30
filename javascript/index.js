@@ -48,6 +48,7 @@ $( document ).ready(function() {
 
     $.post('/userapi',{},
            function(data){
+           	
                var obj = jQuery.parseJSON(data);
                currentevents = obj.UnReadInvitCount;
                $("#current").html('Current invites: ' + currentevents);
@@ -74,7 +75,11 @@ function display(object){
 
 //-------------------------------------------------------------------------------- 
 //循环显示6个invite内容框
-	for(var i=0;i<6;i++){ 
+var actcnt = 6;
+if(object['activities'].length<6) actcnt=object['activities'].length;
+	for(var i=0;i<actcnt;i++){ 
+		
+		
         if (currentevents > 0 && object['activities'][i].ActFlag == 0) {
 			var arrinfostr= "#arr_info_" + (i+1);			
 			var arrinvitorstr= "#arr_invitor" + (i+1); 
@@ -89,28 +94,36 @@ function display(object){
             $(arrinvitorstr).html("Invitor ID: " + object['activities'][i].InviterID);
             $(arrtimestr).html(object['activities'][i].ActTime);			 
             $(arrcontentstr).html(object['activities'][i].ActContent);
+            $(acceptstr).data("ActivityID",object['activities'][i].ActivityID);
+           
+            
 			
-            $(acceptstr).click(function(){
+            $(acceptstr).unbind("click").click(function(){
 				currentevents--;
-              $.post('/changeact',{'ActivityID':object['activities'][i].ActivityID,'Actflag':1},
+				var $this = $(this);
+				
+              $.post('/changeact',{'ActivityID':$(acceptstr).data("ActivityID"),'Actflag':1},
                      function(data){                          
-                         $(arrinfostr).fadeOut(800); 
+                         $this.parents(".arr_info").fadeOut(800); 
+                         
 					  },"text");
             });
             
-            $(rejectstr).click(function(){
-				currentevent--;
-                $.post('/changeact',{'ActivityID':object['activities'][i].ActivityID,'Actflag':-1},
+            $(rejectstr).unbind("click").click(function(){
+				currentevents--;
+				var $this = $(this);
+                $.post('/changeact',{'ActivityID':$(acceptstr).data("ActivityID"),'Actflag':-1},
                        function(data){
-						   $(arrinfostr).fadeOut(800);				   
+						   $this.parents(".arr_info").fadeOut(800);		   
                        },"text");
             });
             
-            $(ignorestr).click(function(){
-				currentevent--;
-                $.post('/changeact',{'ActivityID':object['activities'][i].ActivityID,'Actflag':-2},
+            $(ignorestr).unbind("click").click(function(){
+				currentevents--;
+				var $this = $(this);
+                $.post('/changeact',{'ActivityID':$(acceptstr).data("ActivityID"),'Actflag':-2},
                        function(data){                           
-                           $(arrinfostr).fadeOut(800);
+                          $this.parents(".arr_info").fadeOut(800);
                        },"text");
             });
         } 
@@ -127,6 +140,7 @@ function display(object){
     $('#post').on('click',function(){
         $.post('/postact',$('#postform').serialize(),
                function(data){
+               	
                    $("#postform").fadeOut(600);
                    wp=document.getElementById('Wrapper');
                    wp.style.opacity=1;
