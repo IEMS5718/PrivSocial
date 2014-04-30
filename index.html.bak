@@ -9,71 +9,56 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="jQueryAssets/jquery-ui-1.9.2.button.custom.min.js" type="text/javascript"></script>
 <script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/actor:n4:default.js" type="text/javascript"></script>
-<script>
-$(document).ready(function(){
-	
-	
-	
-	       $.post('/userapi',{},
-        function(data){     
-	         alert(data) ;
-	          },"text");
-	          
-	       
-	       $.post('/getmailinfo',{'mailinfo':0},
-        function(data){     
-	         alert(data) ;
-	          },"text");
-	          
-	          
-$('#post').on('click',function(){
-	     alert($('#postform').serialize());
-	 $.post('/postact',$('#postform').serialize(),
-        function(data){     
-	          },"text");
-	          });
-	          
-	       
-
-$('#accept1').on('click',function(){
-	alert('123');
-	     $.post('/changeact',{'ActivityID':15001,'Actflag':-1},
-        function(data){     
-	         alert(data) ;
-	          },"text");   
-	          });
-          
-	          
-	          
-	        });
-	      
-</script>
-
 </head>
 
 <body>
 <script src='javascript/index.js'></script>
 <div id="Wrapper">
   <header id="Topline">
-<h2>FilmSoci.</h2>
+	<h2>FilmSoci.</h2>
     <div id="user_info">
     <img src="Images/u=2272587471,1704352936&fm=23&gp=0.jpg" id="user_info_head_img" width="50" height="50" alt="">
     <p id="user_info_name">username</p>
     </div>
   </header>
+  
+  <!--新加的mail内容，一个div为显示mail列表，一个form为回复信息-->
+<div id="mailrcv">
+  <!--这个是关闭窗口按钮，需要一个js，可以参考本页最下面的post和close按钮所对应的js-->
+
+  <select id="rcv_maillist" name="rcv_maillist" onchange=""><!--这里onchange里面的值应该是新写的js函数，是用户选择列表中一个mail名字之后，会在右侧textarea中显示该消息的详细内容-->
+  <!--下面的option需要从服务器获取到邮件信息后，动态用$("").append来显示整个邮件列表，可能会用到for循环-->
+  <option value="rcv_mail_1">Select one</option>   
+  </select>
+  <input type="text" id="rcv_sender" name="rcv_sender" placeholder="Sender">  
+  <textarea id="rcv_mailcontent" name="rcv_mailcontent"></textarea>
+<input type="submit" class="button" id="rcv_reply" value="Reply">
+  <input type="button" class="button" id="rcv_cancel" value="Cancel">   
+</div>
+
+<!--注意，这个框和上面那个框是重合的，并且是同样大小。体现的效果是上面的框点击后，会直接在那个框里进行内容变化-->
+
+<form id="mailsd_form" method="post" action="">
+<input type="text" id="sd_receiver" name="sd_receiver" placeholder="Receiver">
+  <textarea id="sd_mailcontent" name="sd_mailcontent" placeholder="Content"></textarea>
+<input type="submit" class="button" id="sd_submit" value="Send">
+  <input type="button" class="button" id="sd_cancel" value="Cancel">
+</form>
+  <!--新加的mail内容-->  
+  
   <div id="Leftline">
     <aside id="Leftline_top">
-    <p id="month">April.</p>
-    <p id="day">23</p>
+    <p id="month"></p>
+    <p id="day"></p>
     <p id="current">Current invites: 0</p>
     </aside>
     
     <nav id="Navi">
       <ul class="naviul" >
-        <p id="space">SPACES</p>  
-        <li id="profile"><a href="Profile.html">Profile</a></li>
-        <li id="activity"><a href="index.html">Activity</a></li>
-        <li id="arrangement"><a href="Arrangment.html">Arrangement</a></li>
+        <p id="space">SPACES</p>
+        <li id="activity"><a href="index.html">Activity</a></li>  
+        <li id="profile"><a href="Profile.html">Profile</a></li>        
+        <li id="arrangement"><a href="Arrangment.html">Agenda</a></li>
       </ul>
     </nav>
     <nav id="definecolor"></nav>
@@ -82,80 +67,81 @@ $('#accept1').on('click',function(){
   <p id="mine">Mine</p>
 <div class="arr_info" id="my_profile">
       <header id="arr_header"></header>
-    <p id="mine_name">username</p>
-    <p id="mine_current_arrange">current arrange: 0</p> 
+	<p id="mine_name">username</p> 
     <hr id="line">   
-    <p id="	arr_content">friends: 20<p>
-    <p id="	arr_content">mailbox: 5<p>
+    <p id="mine_current_arrange">current arrange: 0</p>
+    <p id="arr_content">email:<p>
+    <p id="arr_tel">tel:<p>
     </div>  
   </div>
   <div id="Content">
-  <input type="button" class="button" id="postbutton" value="Post Act">
+  <input type="button" class="button" id="postbutton" value="New Event">
     <h1>Activity</h1>
+    <h2 id="nothing_hint">No Unread Event</h2>
     
 <div class="arr_info" id="arr_info_1">
       <header id="arr_header"></header>
-    <p id="arr_invitor">invitor</p>
-    <p id="arr_time">this is time</p> 
+    <p id="arr_invitor1">invitor</p>
+    <p id="arr_time1">this is time</p> 
     <hr id="line">   
-    <p id="	arr_content">no arrangement<p>
-    <input type="image" src="#" id="accept1"></input>
-    <input type="image" src="#" id="reject1"></input>
-    <input type="image" src="#" id="ignore1"></input>
+    <p id="arr_content1">No more details<p>
+    <input type="button" id="accept1" class="acceptbutton" title="Accept"></input>
+    <input type="button" id="reject1" class="rejectbutton" title="Reject"></input>
+    <input type="button" id="ignore1" class="ignorebutton" title="Ignore"></input>
     </div>
     
 <div class="arr_info" id="arr_info_2">
       <header id="arr_header"></header>
-    <p id="arr_invitor">invitor</p>
-    <p id="arr_time">this is time</p> 
+    <p id="arr_invitor2">invitor</p>
+    <p id="arr_time2">this is time</p> 
     <hr id="line">   
-    <p id="	arr_content">no arrangement<p>
-    <input type="image" src="#" id="accept2"></input>
-    <input type="image" src="#" id="reject2"></input>
-    <input type="image" src="#" id="ignore2"></input>
+    <p id="	arr_content2">No more details<p>
+    <input type="button" id="accept2" class="acceptbutton" title="Accept"></input>
+    <input type="button" id="reject2" class="rejectbutton" title="Reject"></input>
+    <input type="button" id="ignore2" class="ignorebutton" title="Ignore"></input>
     </div>
     
 <div class="arr_info" id="arr_info_3">
       <header id="arr_header"></header>
-    <p id="arr_invitor">invitor</p>
-    <p id="arr_time">this is time</p> 
+    <p id="arr_invitor3">invitor</p>
+    <p id="arr_time3">this is time</p> 
     <hr id="line">   
-    <p id="	arr_content">no arrangement<p>
-    <input type="image" src="#" id="accept3"></input>
-    <input type="image" src="#" id="reject3"></input>
-    <input type="image" src="#" id="ignore3"></input>
+    <p id="	arr_content3">No more details<p>
+    <input type="button" id="accept3" class="acceptbutton" title="Accept"></input>
+    <input type="button" id="reject3" class="rejectbutton" title="Reject"></input>
+    <input type="button" id="ignore3" class="ignorebutton" title="Ignore"></input>
     </div>
 <div class="arr_info" id="arr_info_4">
       <header id="arr_header"></header>
-    <p id="arr_invitor">invitor</p>
-    <p id="arr_time">this is time</p> 
+    <p id="arr_invitor4">invitor</p>
+    <p id="arr_time4">this is time</p> 
     <hr id="line">   
-    <p id="	arr_content">no arrangement<p>
-    <input type="image" src="#" id="accept4"></input>
-    <input type="image" src="#" id="reject4"></input>
-    <input type="image" src="#" id="ignore4"></input>
+    <p id="	arr_content4">No more details<p>
+    <input type="button" id="accept4" class="acceptbutton" title="Accept"></input>
+    <input type="button" id="reject4" class="rejectbutton" title="Reject"></input>
+    <input type="button" id="ignore4" class="ignorebutton" title="Ignore"></input>
     </div>
     
 <div class="arr_info" id="arr_info_5">
       <header id="arr_header"></header>
-    <p id="arr_invitor">invitor</p>
-    <p id="arr_time">this is time</p> 
+    <p id="arr_invitor5">invitor</p>
+    <p id="arr_time5">this is time</p> 
     <hr id="line">   
-    <p id="	arr_content">no arrangement<p>
-    <input type="image" src="#" id="accept5"></input>
-    <input type="image" src="#" id="reject5"></input>
-    <input type="image" src="#" id="ignore5"></input>
+    <p id="	arr_content5">No more details<p>
+    <input type="button" id="accept5" class="acceptbutton" title="Accept"></input>
+    <input type="button" id="reject5" class="rejectbutton" title="Reject"></input>
+    <input type="button" id="ignore5" class="ignorebutton" title="Ignore"></input>
     </div>
     
 <div class="arr_info" id="arr_info_6">
       <header id="arr_header"></header>
-    <p id="arr_invitor">invitor</p>
-    <p id="arr_time">this is time</p> 
-    <hr id="line">   
-    <p id="	arr_content">no arrangement<p>
-    <input type="image" src="#" id="accept"></input>
-    <input type="image" src="#" id="reject"></input>
-    <input type="image" src="#" id="ignore"></input>
+    <p id="arr_invitor6">invitor</p>
+    <p id="arr_time6">this is time</p> 
+    <hr id="line6">   
+    <p id="	arr_content6">No more details<p>
+    <input type="button" id="accept6" class="acceptbutton" title="Accept"></input>
+    <input type="button" id="reject6" class="rejectbutton" title="Reject"></input>
+    <input type="button" id="ignore6" class="ignorebutton" title="Ignore"></input>
     </div>
   </div>
 </div>

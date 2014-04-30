@@ -30,6 +30,7 @@ handlers:
   static_files: Profile.html
   upload: Profile.html 
   
+  
 # images
 - url: /Images
   static_dir: Images
@@ -56,6 +57,11 @@ handlers:
 - url: /Error.css
   static_files: Error.css
   upload: Error.css
+  
+ #css style file  
+- url: /index.css
+  static_files: index.css
+  upload: index.css
   
  #css style file  
 - url: /Profile.css

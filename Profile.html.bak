@@ -9,10 +9,11 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="jQueryAssets/jquery-ui-1.9.2.button.custom.min.js" type="text/javascript"></script>
 <script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/actor:n4:default.js" type="text/javascript"></script>
+<script src='javascript/profile.js' type="text/javascript"></script>
 </head>
 
 <body>
-<script src='javascript/profile.js'></script>
+
 <div id="Wrapper">
   <header id="Topline">
     <h2>FilmSoci.</h2>
@@ -21,19 +22,44 @@
     <p id="user_info_name">username</p>
     </div>
   </header>
+  
+  <!--新加的mail内容，一个div为显示mail列表，一个form为回复信息-->
+<div id="mailrcv">
+  <!--这个是关闭窗口按钮，需要一个js，可以参考本页最下面的post和close按钮所对应的js-->
+
+  <select id="rcv_maillist" name="rcv_maillist" onchange=""><!--这里onchange里面的值应该是新写的js函数，是用户选择列表中一个mail名字之后，会在右侧textarea中显示该消息的详细内容-->
+  <!--下面的option需要从服务器获取到邮件信息后，动态用getElementByid().innerHTML来显示整个邮件列表，可能会用到for循环-->
+  <option value="rcv_mail_1">Select one</option>   
+  </select>
+  <input type="text" id="rcv_sender" name="rcv_sender" placeholder="Sender">  
+  <textarea id="rcv_mailcontent" name="rcv_mailcontent"></textarea>
+<input type="submit" class="button" id="rcv_reply" value="Reply">
+  <input type="button" class="button" id="rcv_cancel" value="Cancel">   
+</div>
+
+<!--注意，这个框和上面那个框是重合的，并且是同样大小。体现的效果是上面的框点击后，会直接在那个框里进行内容变化-->
+
+<form id="mailsd_form" method="post" action="">
+<input type="text" id="sd_receiver" name="sd_receiver" placeholder="Receiver">
+  <textarea id="sd_mailcontent" name="sd_mailcontent" placeholder="Content"></textarea>
+<input type="submit" class="button" id="sd_submit" value="Send">
+  <input type="button" class="button" id="sd_cancel" value="Cancel">
+</form>
+  <!--新加的mail内容-->  
+  
   <div id="Leftline">
     <aside id="Leftline_top">
-    <p id="month">April.</p>
-    <p id="day">23</p>
+    <p id="month"></p>
+    <p id="day"></p>
     <p id="current">Current invites: 5</p>
     </aside>
     
     <nav id="Navi">
       <ul class="naviul" >
-        <p id="space">SPACES</p>  
-        <li id="profile"><a href="Profile.html">Profile</a></li>
-        <li><a href="index.html">Activity</a></li>
-        <li id="arrangement"><a href="Arrangment.html">Arrangement</a></li>
+        <p id="space">SPACES</p> 
+        <li id="activity"><a href="index.html">Activity</a></li> 
+        <li id="profile"><a href="Profile.html">Profile</a></li>        
+        <li id="arrangement"><a href="Arrangment.html">Agenda</a></li>
       </ul>
      </nav>
     <nav id="definecolor"></nav>
@@ -41,14 +67,20 @@
   <div id="Rightline">  </div>
   <div id="Content">
     <h1>Profile</h1>
-    <p><img id="Headdisplay" src=""></p>
+    <p><img id="Headdisplay" src="Images/u=2272587471,1704352936&fm=23&gp=0.jpg" width="110px" height="110px"></p>
     <div id="user_profile">
-    	<form id="saveimage" method="post" action='/saveimage' enctype="multipart/form-data">
-    	    <p id="headupdate">Update Head: <br> <input type="file" id="headupdate" size="16px" name="headimage"> <p id="buttoncover" class="button">Choose File<p></p>
-    	    	<input type="submit" value="upload"></input>
+    
+    	<form id="saveimage" method="post" action='/saveimage' enctype="multipart/form-data" >
+    	  <p id="headupdatehint">Update Photo: <br> <input type="file" id="headupdate" size="16px" name="file"> 
+         <p id="buttoncover" class="button">Choose File<p></p>
+    	  <input type="submit" value="upload" class="button" id="upload"></input>
     	 </form>
+         
     <form id="user_profile_form" action='/saveprofile'>
-    <p id="nickname">Nickname: <br><input type="text" id="nickname" name="nickname"></p>
+    <p id="emailhint">Email/Username: <br> <input type="email" id="email" value="" name="emailhint"></p>
+    <p id="nickname">Nickname: <br><input type="text" id="nickname2" name="nickname"></p>    
+	 <p id="signature">Signature: <br> <textarea name="signature" id="sig"></textarea></p>
+    <p id="telephone">Telephone: <br><input type="tel" id="tel" name="telephone"></p>
     <p id="gender">Gender: <br>     
       <label>
         <input type="radio" name="Gender" value="Male" id="Gender_0">
@@ -56,11 +88,10 @@
       <label>
         <input type="radio" name="Gender" value="Female" id="Gender_1">
         Female</label>
-      <br>
+      
     </p>
-	 <p id="signature">Signature: <br> <textarea name="signature"></textarea></p>
-    <p id="telephone">Telephone: <br><input type="tel" id="id" name="telephone"></p>
-    <p>Agree to be Invited: <br>       
+
+    <p id="agtoinv">Agree to be Invited: <br>       
     <label>
         <input type="radio" name="invitable" value="Yes" id="Invited_0">
         Yes</label>      
@@ -69,7 +100,7 @@
         No</label>
       <br>
     </p>
-	<p id="emailhint">Email/Username: <br> <input type="email" id="email" value="" name="emailhint"></p>
+
     <p id="formbuttons"><input type="submit" id="update" value="Update" class="button">   <input type="reset" id="reset" value="Reset" class="button"></p>
     </form>
     </div>

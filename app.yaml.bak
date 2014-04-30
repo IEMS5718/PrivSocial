@@ -1,4 +1,4 @@
-application: private
+application: privsocial
 version: 1
 runtime: python27
 api_version: 1
@@ -9,6 +9,11 @@ handlers:
 - url: /
   static_files: login.html
   upload: login.html
+
+#  a static file mapping
+- url: /Error.html
+  static_files: Error.html
+  upload: Error.html
   
 #  a static file mapping
 - url: /index.html
@@ -25,10 +30,16 @@ handlers:
   static_files: Profile.html
   upload: Profile.html 
   
+  
 # images
 - url: /Images
   static_dir: Images
  
+ #css style file  
+- url: /login.css
+  static_files: login.css
+  upload: login.css
+
  #css style file  
 - url: /login.css
   static_files: login.css
@@ -43,14 +54,14 @@ handlers:
   static_dir: jQueryAssets
   
  #css style file  
-- url: /index.css
-  static_files: index.css
-  upload: index.css
+- url: /Error.css
+  static_files: Error.css
+  upload: Error.css
   
  #css style file  
-- url: /profile.css
-  static_files: profile.css
-  upload: profile.css
+- url: /Profile.css
+  static_files: Profile.css
+  upload: Profile.css
   
 #css style file  
 - url: /Arrangement.css

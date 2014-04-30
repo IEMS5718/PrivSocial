@@ -279,7 +279,7 @@ def getmailinfo(self):
         data['mails']=maillist
         jsonobj=json.dumps(data)
         self.response.write(jsonobj)
-    if mailinfo=='all':   # all message
+     if mailinfo=='0':   # unread message
         data={}
         data['flag']='1'
         data['mailinfo']= mailinfo
@@ -289,16 +289,17 @@ def getmailinfo(self):
         queryMail = Mail.query(Mail.UserID == userID)
         resMail = queryMail.fetch()
         for mail in resMail:
-            mailData={}
-            mailData['MailContent']=mail.MailContent
-            mailData['MailID']=mail.MailID
-            mailData['MailFlag']=mail.MailFlag 
-            mailData['PosterId']=mail.PosterID
-            mailData['PosterEmail']=mail.PosterEmail
-            mailData['PostTime']=mail.PostTime.strftime('%b-%d-%y %H:%M:%S') 
-            maillist.append(mailData)
-            mail.MailFlag=1
-            mail.put()
+            if mail.MailFlag==0:
+                mailData={}
+                mailData['MailContent']=mail.MailContent
+                mailData['MailID']=mail.MailID
+                mailData['MailFlag']=mail.MailFlag 
+                mailData['PosterId']=mail.PosterID
+                mailData['PosterEmail']=mail.PosterEmail
+                mailData['PostTime']=mail.PostTime.strftime('%b-%d-%y %H:%M:%S') 
+                maillist.append(mailData)
+                mail.MailFlag=1
+                mail.put()
         data['mails']=maillist
         jsonobj=json.dumps(data)
         self.response.write(jsonobj)

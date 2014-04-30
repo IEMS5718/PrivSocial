@@ -102,7 +102,7 @@ if(object['activities'].length<6) actcnt=object['activities'].length;
 				currentevents--;
 				var $this = $(this);
 				
-              $.post('/changeact',{'ActivityID':$(acceptstr).data("ActivityID"),'Actflag':1},
+              $.post('/changeact',{'ActivityID':$this.data("ActivityID"),'Actflag':1},
                      function(data){                          
                          $this.parents(".arr_info").fadeOut(800); 
                          
@@ -112,7 +112,7 @@ if(object['activities'].length<6) actcnt=object['activities'].length;
             $(rejectstr).unbind("click").click(function(){
 				currentevents--;
 				var $this = $(this);
-                $.post('/changeact',{'ActivityID':$(acceptstr).data("ActivityID"),'Actflag':-1},
+                $.post('/changeact',{'ActivityID':$this.data("ActivityID"),'Actflag':-1},
                        function(data){
 						   $this.parents(".arr_info").fadeOut(800);		   
                        },"text");
@@ -121,7 +121,7 @@ if(object['activities'].length<6) actcnt=object['activities'].length;
             $(ignorestr).unbind("click").click(function(){
 				currentevents--;
 				var $this = $(this);
-                $.post('/changeact',{'ActivityID':$(acceptstr).data("ActivityID"),'Actflag':-2},
+                $.post('/changeact',{'ActivityID':$this.data("ActivityID"),'Actflag':-2},
                        function(data){                           
                           $this.parents(".arr_info").fadeOut(800);
                        },"text");
@@ -157,5 +157,123 @@ if(object['activities'].length<6) actcnt=object['activities'].length;
         wp=document.getElementById('Wrapper');
         wp.style.opacity=1;
     });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    		// --------------------- handle mail ------------------------
+		
+		function initMailInfo(){
+			$("#mailsd_form").css("display","none");
+			$("#mailrcv").css("display","none");
+			$("#user_info_name").unbind("click").click(function(){
+					
+			
+		    $.post('/getmailinfo',{"mailinfo":"all"},
+          function(data){
+          	
+ 
+          	$("#mailrcv").css("display","block");
+          	var mailList = data.mails;
+          	var $rcv_maillist = $("#rcv_maillist");
+          	$rcv_maillist.css("width","50px");
+          	$rcv_maillist.empty();
+          	$("#rcv_sender").val("");
+           
+           $("#rcv_mailcontent").val("");
+          	
+          $rcv_maillist.append('<option value="rcv_mail_1">Select one</option>');
+          var unReadCnt = 0;
+          	for(var i = 0; i< mailList.length; i++){
+          		
+          		var mail = mailList[i];
+          		var newOption = $("<option></option>");
+          		newOption.val(mail.MailID);
+          		if(mail.MailFlag == 0){ 
+          			newOption.text(mail.MailID + "new!");
+          			unReadCnt ++;
+          			}
+          		else{newOption.text(mail.MailID);}
+          		newOption.data("mail",mail);
+          		$rcv_maillist.append(newOption);
+          		
+          		$("#user_info_name span").remove();
+          		
+          		$("#user_info_name").append('<span style="color:rgb(255,255,255)">newmsg:'+unReadCnt+'</span>');
+          		
+          		
+          	}
+          	
+          	
+          	
+          	
+          	
+          },"json");
+          
+       $("#rcv_maillist").unbind("change").change(function(){
+       	
+           var mailId = $(this).val();
+           var curOption = $("#rcv_maillist option[value="+mailId+"]");
+           var mail = curOption.data("mail");
+           $("#rcv_sender").val(mail.PosterEmail);
+           
+           $("#rcv_mailcontent").val(mail.MailContent);
+           
+       	});
+       	
+       	$("#rcv_cancel").unbind("click").click(function(){
+       		$("#mailrcv").css("display","none");
+       		
+       		});
+       		
+       		
+       	$("#rcv_reply").unbind("click").click(function(){
+       		
+       		$("#mailsd_form").css("display","block");
+       		$("#sd_receiver").val( $("#rcv_sender").val());
+       		
+       		
+       		
+       		});
+       		
+       		$("#sd_cancel").unbind("click").click(function(){
+       			$("#mailsd_form").css("display","none");
+       			
+       			});
+       	
+       	$("#sd_submit").unbind("click").click(function(){
+       		
+       		
+       		$.post('/negotiate',{'receiver':$("#sd_receiver").val(),'msgcontent':$('#sd_mailcontent').val()},
+        function(data){ 
+			$("#mailsd_form").fadeOut(800);
+		return false;
+       		
+       		});
+       			
+       			return false; 
+				
+				
+				
+				
+				});
+		
+		});
+		
+			
+			
+			
+		}
+		
+		initMailInfo();
+		
+	
+		
+		// --- end of handle mail --------------
     
 });

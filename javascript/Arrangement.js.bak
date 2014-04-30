@@ -260,7 +260,7 @@ $( document ).ready(function() {
           		
           		$("#user_info_name span").remove();
           		
-          		$("#user_info_name").append('<span style="color:rgb(255,255,255)">newmsg:'+unReadCnt+'</span>');
+          		$("#user_info_name").append('<span style="color:rgb(255,255,255)">newmsg('+unReadCnt+')</span>');
           		
           		
           	}
