@@ -54,7 +54,7 @@ $( document ).ready(function() {
                $("#current").html('Current invites: ' + currentevents);
                var currentarr = obj.RejectInvitCount + obj.AcceptInvitCount + obj.IgnoreInvitCount;
                $("#mine_current_arrange").html('Current arrange: ' + currentarr);
-               $("#user_info_name").html(obj.NickName + ' (' + obj.UserID + ')' );
+               $("#user_info_name").html(obj.NickName + ' ( mailbox )' );
                $("#mine_name").html(obj.NickName);
 			    $("#arr_content").html('Email: ' + obj.Email);
                $("#arr_tel").html('Tel: ' + obj.Tel);
@@ -181,7 +181,7 @@ if(object['activities'].length<6) actcnt=object['activities'].length;
           	$("#mailrcv").css("display","block");
           	var mailList = data.mails;
           	var $rcv_maillist = $("#rcv_maillist");
-          	$rcv_maillist.css("width","50px");
+          	$rcv_maillist.css("width","90px");
           	$rcv_maillist.empty();
           	$("#rcv_sender").val("");
            
@@ -204,7 +204,8 @@ if(object['activities'].length<6) actcnt=object['activities'].length;
           		
           		$("#user_info_name span").remove();
           		
-          		$("#user_info_name").append('<span style="color:rgb(255,255,255)">newmsg:'+unReadCnt+'</span>');
+				
+          		$("#user_info_name").append('<span style="color:#737373"> newmsg: '+ unReadCnt+'</span>');
           		
           		
           	}

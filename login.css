@@ -1,7 +1,6 @@
 @charset "UTF-8";
 body {
 	background-image: url(Images/login_background.jpg);
-	background-repeat: no-repeat;
 	background-attachment: fixed;
 	position:relative;
 }
@@ -31,7 +30,7 @@ body {
 	margin-left: auto;
 	position: absolute;
 	top: -136px;
-	left: 1319px;
+	left: 93%;
 }
 #center #signin:hover {
 	color: #D9D7D7;
@@ -79,6 +78,7 @@ body form {
 	border-color: #424242;
 	padding-left: 10px;
 	position: absolute;
+	left: -25px;
 }
 #password {
 	padding-top: 5px;
@@ -92,7 +92,7 @@ body form {
 	border-style: solid;
 	width: auto;
 	position: absolute;
-	left: 158px;
+	left: 155px;
 }
 #logindiv {
 	opacity: 1;
@@ -114,7 +114,7 @@ body form {
 	z-index: 1;
 	cursor: pointer;
 	position: absolute;
-	left: 321px;
+	left: 340px;
 	top: 3px;
 }
 
@@ -216,7 +216,7 @@ body form {
 	-webkit-box-shadow: 0px 0px 9px 2px #C8C8C8;
 	box-shadow: 0px 0px 9px 2px #C8C8C8;
 	width: 350px;
-	padding-left: 52px;
+	padding-left: 30px;
 	padding-bottom: 30px;
 	padding-top: 9px;
 	float: right;

@@ -6,6 +6,7 @@ html, body {
 	margin-left: auto;
 	margin-right: auto;
 	height: 100%;
+	min-height:900;
 	width: 1200px;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	display: block;
@@ -46,13 +47,13 @@ html, body {
 	font-weight: 400;
 	font-size: 10pt;
 	position: relative;
-	top: -39px;
+	top: -38px;
 	left: 39px;
 	cursor:pointer;
 }
 #user_info {
-	width: 100px;
-	left: 90%;
+	width: 167px;
+	left: 85%;
 	position: absolute;
 	top: 7px;
 	border-radius: 0px;
@@ -69,6 +70,9 @@ html, body {
 	border: thin solid #393A3C;
 	border-radius: 3px;
 	height: 170px;
+	opacity: 0.85;
+	-webkit-box-shadow: 0px 0px 5px 3px #838383;
+	box-shadow: 0px 0px 5px 3px #838383;
 }
 #mailrcv #rcv_close {
 	color: #FCFBFB;
@@ -85,7 +89,7 @@ html, body {
 	border-spacing: 1px 1px;
 	border: thin solid #F8F7F7;
 	border-radius: 3px;
-	top: 14px;
+	top: 13px;
 	left: -3px;
 	height: 22px;
 }
@@ -146,6 +150,8 @@ html, body {
 	border: thin solid #393A3C;
 	border-radius: 3px;
 	height: 170px;
+	-webkit-box-shadow: 0px 0px 5px 3px #838383;
+	box-shadow: 0px 0px 5px 3px #838383;
 }
 #mailsd_form #sd_receiver {
 	position: relative;
@@ -194,12 +200,10 @@ html, body {
 	color: #FBF9F9;
 	width: 225px;
 	height: 90%;
-	max-height:1080px;
-	float: left;
+	max-height: 1080px;
 	font-size: 9pt;
 	position: absolute;
 	top: 40px;
-	list-style-image: url(Images/ico_profile.png);
 }
 #Leftline_top {
 	width: 100%;
@@ -246,10 +250,10 @@ html, body {
 	font-size: 11pt;
 	line-height: 25px;
 	color: #3F3F3F;
-	float: left;
-	position: relative;
-	top: 50%;
-	left: 5%;
+	position: absolute;
+	top: 150px;
+	list-style-type: none;
+	left: 13px;
 }
 #Navi .naviul li a  {
 	color: #575757;
@@ -266,18 +270,25 @@ html, body {
 #Navi .naviul #space {
 	position: relative;
 	top: 50%;
-	left: -16%;
 }
 #profile {
-	list-style-position: outside;
+	background-repeat: no-repeat;
+	background-position: 0% 50%;
+	padding-left: 16px;
+	background-image: url(Images/ico_profile.png);
 }
 #activity {
-	list-style-image: url(Images/ico_act.png);
-	list-style-position: outside;
+	background-image: url(Images/ico_act.png);
+	background-repeat: no-repeat;
+	width: 90px;
+	padding-left: 16px;
+	background-position: 0% 50%;
 }
 #arrangement {
-	list-style-image: url(Images/ico_arrange.png);
-	list-style-position: outside;
+	background-image: url(Images/ico_arrange.png);
+	background-position: 0% 50%;
+	background-repeat: no-repeat;
+	padding-left: 16px;
 }
 #Rightline {
 	width: 225px;
@@ -605,6 +616,3 @@ html, body {
 	border: thin solid #E7E5E5;	
 	
 	}
-
-
-

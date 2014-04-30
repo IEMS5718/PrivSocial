@@ -2,20 +2,29 @@ $( document ).ready(function() {
 
 	$("#signinwindow").hide();
 	
-	 $("#signup").click(function(){            
-	   var un = $('#username').val();
-	   var pw = $('#password').val();
-	   if(un=="" || pw==""){
-	     alert("I can't find the username or password");
-	   } 
+	
+	 $("#send").click(function(){            
+	   var email = $('#email').val();
+	   var fp = $('#firstpassword').val();
+	   var rp = $('#repassword').val();
+	   if(email=="" || fp=="" || fp!=rp ){
+	     document.location="/Error.html";
+	   }
+	   else{
+		   $("#user_profile_form").submit();					   
+		 } 
      }); 
-	 
+
 	 $("#login").click(function(){             //登录
 	   var un = $('#username').val();
 	   var pw = $('#password').val();
 	   if(un=="" || pw==""){
-	     alert("I can't find the username or password");
-	   } 
+	     document.location="/Error.html";
+	   }
+	   else{
+			$("#loginform").submit();
+		   }
+
 	 });
 
 //Sign in弹出窗口效果和关闭效果

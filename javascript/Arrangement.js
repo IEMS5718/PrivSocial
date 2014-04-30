@@ -72,7 +72,7 @@ $( document ).ready(function() {
              var obj = jQuery.parseJSON(data);
              currentevents = obj.UnReadInvitCount;
              $("#current").html('Current invites: ' + currentevents);
-             $("#user_info_name").html(obj.NickName + ' (' + obj.UserID + ')' );
+             $("#user_info_name").html(obj.NickName + ' ( mailbox )' );
              //*VERY IMPORTANT : alert(obj['activities'][1].ActTime);
 			 //显示对应天数的按钮
 				var i=0;
@@ -237,7 +237,7 @@ $( document ).ready(function() {
           	$("#mailrcv").css("display","block");
           	var mailList = data.mails;
           	var $rcv_maillist = $("#rcv_maillist");
-          	$rcv_maillist.css("width","50px");
+          	$rcv_maillist.css("width","90px");
           	$rcv_maillist.empty();
           	$("#rcv_sender").val("");
            
@@ -260,7 +260,7 @@ $( document ).ready(function() {
           		
           		$("#user_info_name span").remove();
           		
-          		$("#user_info_name").append('<span style="color:rgb(255,255,255)">newmsg:'+unReadCnt+'</span>');
+          		$("#user_info_name").append('<span style="color:#737373"> newmsg: '+unReadCnt+'</span>');
           		
           		
           	}
